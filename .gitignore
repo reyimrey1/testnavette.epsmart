@@ -1,0 +1,5 @@
+# La bande-son Luc Léger est protégée par le droit d'auteur : ne jamais l'envoyer sur GitHub.
+*.mp3
+*.wav
+*.m4a
+*.ogg

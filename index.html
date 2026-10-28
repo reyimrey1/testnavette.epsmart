@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="fr" data-view="setup">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<script>try{var __t=localStorage.getItem("epsmart-theme");if(__t==="light"||__t==="dark")document.documentElement.setAttribute("data-theme",__t);}catch(e){}</script>
+<title>PACE — Test Luc Léger | EPS</title>
+<meta name="description" content="Outil de terrain pour professeurs d’EPS : test Luc Léger (navette 20 m) synchronisé avec la bande-son, couloirs numérotés, VMA, import Massar, export PDF/Excel. Fonctionne hors ligne.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+:root{--bg:#0b1220;--panel:#111c2d;--panel2:#17243a;--line:#2a3950;--text:#edf3fc;--muted:#9eacc2;--lime:#d5fa47;--lime2:#b8e52b;--blue:#64c6ff;--red:#ff6b6b;--green:#49d7a0;--radius:18px;--shadow:0 18px 50px #0003}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#17304a 0,transparent 36%),var(--bg)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.app{max-width:1480px;margin:0 auto;padding:18px 22px 36px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.brand-mark{height:46px;width:46px;border-radius:14px;background:var(--lime);color:#101827;display:grid;place-items:center;font-weight:1000;font-size:22px;box-shadow:0 6px 20px #d5fa4733}.brand-name{font-weight:900;letter-spacing:.14em;font-size:17px}.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}.top-actions{display:flex;align-items:center;gap:10px}.pill{display:inline-flex;gap:7px;align-items:center;border:1px solid var(--line);background:#111b2b;border-radius:99px;padding:8px 12px;color:var(--muted);font-size:12px}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green)}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin:6px 0 22px}.eyebrow{color:var(--lime);font-size:11px;font-weight:850;letter-spacing:.17em;text-transform:uppercase}.hero h1{font-size:clamp(26px,3.3vw,43px);line-height:1.03;letter-spacing:-.045em;margin:9px 0 8px}.hero p{color:var(--muted);max-width:650px;margin:0;line-height:1.55;font-size:14px}.steps{display:flex;align-items:center;gap:7px;margin:22px 0}.step{display:flex;align-items:center;gap:8px;color:#7f8da5;font-size:12px;font-weight:750}.step-num{width:27px;height:27px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;background:#121d2e}.step.active{color:var(--text)}.step.active .step-num{background:var(--lime);color:#0d1523;border-color:var(--lime)}.step-line{height:1px;background:var(--line);width:44px;margin:0 2px}.grid-setup{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(400px,1.2fr);gap:16px}.card{background:linear-gradient(145deg,#152238,#111b2b);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;min-width:0}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:17px}.card-title{font-weight:850;font-size:16px;letter-spacing:-.02em}.card-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-top:5px}.num-badge{display:grid;place-items:center;border-radius:10px;width:34px;height:34px;background:#26374e;color:var(--lime);font-weight:900}.dropzone{border:1.5px dashed #52647d;background:#0d1726;border-radius:15px;padding:23px 16px;text-align:center;transition:.18s}.dropzone.dragover{border-color:var(--lime);background:#17221b}.upload-icon{margin:0 auto 10px;width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:#24354a;font-size:22px}.dropzone strong{display:block;font-size:14px}.dropzone p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 14px}.btn{border:1px solid transparent;border-radius:11px;padding:11px 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:12px;font-weight:850;transition:transform .15s,background .15s;white-space:nowrap}.btn:hover{transform:translateY(-1px)}.btn-primary{background:var(--lime);color:#101827}.btn-primary:hover{background:var(--lime2)}.btn-secondary{background:#23334a;color:var(--text);border-color:#31435b}.btn-ghost{color:var(--muted);background:transparent;border-color:var(--line)}.btn-danger{background:#472332;color:#ffdbe0;border-color:#743347}.btn-small{padding:8px 10px;font-size:11px;border-radius:9px}.file-info{display:none;margin-top:13px;align-items:center;gap:10px;padding:11px;border:1px solid #2a4a42;background:#132c2a;border-radius:12px}.file-info.visible{display:flex}.file-type{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:#1d5948;color:#9ef1c9;font-size:10px;font-weight:900}.file-meta{min-width:0;flex:1}.file-meta strong{display:block;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.file-meta span{color:var(--muted);font-size:11px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:18px}.field{display:flex;flex-direction:column;gap:7px}.field label{font-size:11px;color:var(--label);font-weight:750}.field input,.field select,.search{min-width:0;width:100%;background:#0c1625;border:1px solid #2e4059;color:var(--text);border-radius:10px;padding:11px 10px;font-size:13px}.field input[type=number]{appearance:textfield}.field-hint{font-size:10px;color:#8090a7;line-height:1.4}.protocol-note{margin-top:15px;border-left:3px solid var(--lime);padding:9px 11px;background:#1b2b2e;border-radius:0 9px 9px 0;color:#c2d1d6;font-size:11px;line-height:1.55}.students-card{display:flex;flex-direction:column}.student-tools{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}.search{flex:1;min-width:150px;padding:9px 11px}.count-pill{font-size:11px;border-radius:99px;background:#25374a;padding:7px 10px;color:var(--lime);font-weight:850;white-space:nowrap}.student-list{border:1px solid var(--line);border-radius:13px;overflow:auto;max-height:345px;background:#0d1726}.student-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border-bottom:1px solid #1e2b3e;min-height:48px}.student-row:last-child{border-bottom:0}.student-row:hover{background:#142238}.student-row input{accent-color:var(--lime);width:16px;height:16px;flex:none}.student-index{font-size:10px;color:#70819b;width:20px;flex:none}.student-ident{flex:1;min-width:0}.student-ident strong{font-size:12px;font-weight:750;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.student-ident span{display:block;font-size:10px;color:var(--muted);margin-top:3px}.empty-list{padding:28px 18px;text-align:center;color:var(--muted);font-size:12px;line-height:1.6}.setup-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:16px}.setup-footer .helper{font-size:11px;color:var(--muted);line-height:1.45;max-width:400px}.start-btn{padding:15px 20px;font-size:13px}.hidden{display:none!important}.live-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px}.live-title{display:flex;align-items:center;gap:12px}.live-title h2{font-size:22px;letter-spacing:-.04em;margin:0}.live-title p{color:var(--muted);font-size:12px;margin:5px 0 0}.live-badge{display:flex;align-items:center;gap:7px;background:#40232e;border:1px solid #703044;color:#ffb4c2;border-radius:99px;padding:8px 11px;font-size:11px;font-weight:900}.live-badge .status-dot{background:#ff667a;box-shadow:0 0 0 4px #ff667a22}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:13px}.metric{background:#121e30;border:1px solid var(--line);border-radius:14px;padding:13px 15px}.metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:800}.metric-value{font-variant-numeric:tabular-nums;font-size:26px;font-weight:900;letter-spacing:-.05em;margin-top:5px}.metric-value small{font-size:12px;color:var(--muted);letter-spacing:0}.track-shell{background:linear-gradient(145deg,#122238,#0d1726);border:1px solid var(--line);border-radius:17px;overflow:hidden}.track-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}.track-top strong{font-size:12px}.track-ends{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:10px}.cone-icon{color:var(--lime);font-size:14px}.track-labels{display:grid;grid-template-columns:minmax(125px,190px) 30px 1fr 95px;gap:13px;padding:9px 16px 6px;color:#71839e;text-transform:uppercase;font-size:9px;letter-spacing:.12em;font-weight:850}.track-board{max-height:48vh;min-height:150px;overflow:auto;padding:0 16px 12px;scrollbar-color:#3c4c61 #111d2d}.player-row{display:grid;grid-template-columns:minmax(125px,190px) 30px 1fr 95px;gap:13px;align-items:center;min-height:47px;border-top:1px solid #1c2b3e}.player-name{min-width:0}.player-name strong{display:block;font-size:11px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.player-name span{display:block;font-size:9px;color:#71839a;margin-top:3px}.track-lane{height:31px;position:relative;background:repeating-linear-gradient(90deg,#172940 0,#172940 10px,#1a2e45 10px,#1a2e45 20px);border-radius:7px;overflow:hidden;border:1px solid #31455b}.track-lane:before{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:#9eae93;opacity:.68}.end-line{position:absolute;top:0;bottom:0;width:3px;background:var(--lime);z-index:2}.end-line.left{left:0}.end-line.right{right:0}.cone{position:absolute;top:3px;font-size:12px;z-index:3;opacity:.95}.cone.left{left:5px}.cone.right{right:5px}.runner{position:absolute;z-index:4;left:0%;top:50%;transform:translate(-50%,-50%);border:2px solid #0d1726;width:29px;height:29px;border-radius:9px;background:var(--lime);color:#0d1726;display:grid;place-items:center;font-size:17px;box-shadow:0 2px 8px #0006;transition:box-shadow .12s,filter .12s;touch-action:manipulation;padding:0}.runner:hover{box-shadow:0 0 0 4px #d5fa4733}.runner:focus-visible{outline:3px solid var(--blue)}.runner.stopped{background:#69778a;filter:grayscale(1);cursor:default;opacity:.9}.runner.stopped:after{content:"✓";position:absolute;top:-7px;right:-7px;background:var(--green);color:#082019;font-size:9px;font-weight:1000;width:13px;height:13px;display:grid;place-items:center;border-radius:50%}.player-result{text-align:right;font-size:10px;font-weight:800;color:var(--lime)}.player-result.stopped-label{color:#8392a8}.live-controls{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.controls-left,.controls-right{display:flex;gap:8px;flex-wrap:wrap}.notice{color:var(--muted);font-size:10px;line-height:1.45;margin-top:13px}.progress-wrap{height:4px;background:#223149;margin-top:0}.progress-bar{height:100%;background:var(--lime);width:0;transition:width .15s linear}.results-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}.results-top h2{font-size:28px;letter-spacing:-.04em;margin:0 0 5px}.results-top p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}.result-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:17px}.result-kpi{padding:16px;border:1px solid var(--line);background:#121f31;border-radius:14px}.result-kpi .klabel{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:800}.result-kpi .kvalue{font-size:27px;font-weight:900;letter-spacing:-.04em;margin-top:6px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#0d1726}.result-table{border-collapse:collapse;width:100%;font-size:11px;white-space:nowrap}.result-table th{background:#1a2940;color:#aebdd1;text-align:left;position:sticky;top:0;font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:12px 13px}.result-table td{padding:11px 13px;border-top:1px solid #203047;color:#e4ebf5}.result-table tr:hover td{background:#132239}.status-tag{display:inline-flex;border-radius:99px;padding:5px 8px;background:#26364c;color:#cad6e6;font-size:9px;font-weight:850}.status-tag.done{background:#16392f;color:#82ebbf}.status-tag.pending{background:#3d3221;color:#ffd58c}.result-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}.landscape-note{display:none}.toast{position:fixed;z-index:50;bottom:20px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 30px);padding:12px 16px;background:#eaf5df;color:#14201b;border-radius:12px;font-size:12px;font-weight:800;box-shadow:0 10px 35px #0006;opacity:0;pointer-events:none;transition:opacity .2s}.toast.show{opacity:1}.modal-backdrop{position:fixed;inset:0;background:#030814c7;backdrop-filter:blur(7px);display:grid;place-items:center;padding:20px;z-index:40}.modal{max-width:420px;width:100%;background:#152238;border:1px solid #344862;border-radius:18px;padding:24px;box-shadow:var(--shadow)}.modal h3{font-size:20px;margin:0 0 8px}.modal p{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 20px}.modal-actions{display:flex;justify-content:flex-end;gap:9px}.countdown{position:fixed;inset:0;background:#07101de8;display:grid;place-items:center;z-index:30;backdrop-filter:blur(8px)}.countdown .count-number{font-size:clamp(110px,24vw,240px);font-weight:1000;line-height:1;color:var(--lime);letter-spacing:-.08em;text-shadow:0 0 70px #d5fa4738}.countdown p{margin:0;text-align:center;font-size:12px;font-weight:850;letter-spacing:.18em;text-transform:uppercase;color:#dbe7f3}.smallprint{color:#72839b;font-size:10px;line-height:1.55;margin-top:18px}.rotate-note{display:none}
+.np-row td{background:#1b2638}.np-row.absent td{background:#3a1f26}.np-row.malade td{background:#3a2e17}.np-row.dispense td{background:#1b2c47}.np-row.autre td{background:#2b2b3a}
+.np-tag{font-weight:850;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.lane-no{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;border:2px solid var(--lime);color:var(--lime);font-weight:900;font-size:12px;background:#0f1a2b;justify-self:center;box-shadow:0 0 0 3px #0f1a2b}
+.player-row.is-stopped .lane-no{border-color:#51647c;color:#8fa0b8}
+.student-row.tested{opacity:.55}.tested-tag{margin-left:auto;font-size:10px;font-weight:800;color:var(--lime);white-space:nowrap}
+.motif-modal{max-width:680px;width:100%;max-height:88vh;overflow:auto;background:#152238;border:1px solid #344862;border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.motif-row{display:grid;grid-template-columns:minmax(120px,1fr) auto;gap:8px 12px;align-items:center;border-top:1px solid #243650;padding:9px 0}
+.motif-name{font-weight:750;min-width:0;overflow-wrap:anywhere}
+.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{border:1px solid #3a516d;background:#12202f;color:#dbe6f5;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:750;cursor:pointer;font-family:inherit}.chip.on{background:var(--lime);color:#111827;border-color:var(--lime)}
+.motif-other{grid-column:1/-1;background:#0f1a2b;border:1px solid #3a516d;border-radius:9px;color:var(--text);padding:8px 10px;font:inherit;font-size:13px}
+.motif-bulk{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:10px 0 6px;font-size:12px;color:var(--muted)}
+[dir=auto]{unicode-bidi:plaintext}.name-btn{text-align:start!important}
+.progress-wrap{position:relative}.progress-wrap::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent calc(25% - 1px),rgba(8,14,24,.9) calc(25% - 1px),rgba(8,14,24,.9) calc(25% + 1px),transparent calc(25% + 1px),transparent calc(50% - 1px),rgba(8,14,24,.9) calc(50% - 1px),rgba(8,14,24,.9) calc(50% + 1px),transparent calc(50% + 1px),transparent calc(75% - 1px),rgba(8,14,24,.9) calc(75% - 1px),rgba(8,14,24,.9) calc(75% + 1px),transparent calc(75% + 1px))}
+.name-btn{appearance:none;background:transparent;border:0;border-radius:9px;color:inherit;text-align:left;width:100%;min-height:43px;padding:4px 6px;cursor:pointer;font:inherit;display:block}.name-btn:hover{background:#1c3350}.name-btn:active{background:#264466}.name-btn:disabled{cursor:default;background:transparent;opacity:.75}.name-btn:focus-visible{outline:3px solid var(--blue)}
+@media(max-width:900px){.app{padding:14px}.grid-setup{grid-template-columns:1fr}.students-card .student-list{max-height:280px}.hero{align-items:flex-start;flex-direction:column}.topbar{margin-bottom:14px}.metrics{grid-template-columns:repeat(2,1fr)}.track-board{max-height:50vh}.track-labels,.player-row{grid-template-columns:minmax(95px,145px) 30px 1fr 65px;gap:8px}.track-labels{padding-left:10px;padding-right:10px}.player-row{padding:0 0;min-height:43px}.track-board{padding-left:10px;padding-right:10px}.track-top{padding:12px}}
+@media(max-width:560px){.app{padding:12px}.brand-mark{height:39px;width:39px}.brand-name{font-size:14px}.brand-sub{font-size:9px}.top-actions .pill{display:none}.hero h1{font-size:29px}.card{padding:15px}.steps{gap:5px}.step{font-size:10px;gap:5px}.step-num{width:24px;height:24px}.step-line{width:15px}.field-grid{gap:9px}.setup-footer{align-items:stretch;flex-direction:column}.setup-footer .btn{width:100%}.live-title h2{font-size:18px}.live-controls{align-items:stretch}.controls-left,.controls-right{width:100%}.controls-left .btn,.controls-right .btn{flex:1}.track-labels,.player-row{grid-template-columns:84px 28px minmax(100px,1fr) 52px;gap:5px}.lane-no{width:25px;height:25px;font-size:11px}.player-name strong{font-size:10px}.player-name span{font-size:8px}.runner{width:25px;height:25px;font-size:15px}.metric{padding:10px}.metric-value{font-size:23px}.metric-label{font-size:9px}.result-kpis{grid-template-columns:1fr 1fr 1fr;gap:6px}.result-kpi{padding:11px}.result-kpi .kvalue{font-size:20px}.result-kpi .klabel{font-size:8px}.result-actions .btn{flex:1}}
+@media (orientation:portrait) and (max-width:800px){.rotate-note{display:block;background:#2c3321;color:#e7f8a3;padding:9px 12px;border-radius:10px;font-size:11px;line-height:1.5;margin-bottom:12px}.rotate-note b{color:var(--lime)}}
+@media print{body{background:white;color:#111}.app{max-width:none}.topbar,.hero,.steps,.setup-view,.live-view,.result-actions .btn{display:none!important}.results-view{display:block!important}.card,.result-kpi,.table-wrap{background:white;color:#111;box-shadow:none;border-color:#ddd}.result-table th{background:#eee;color:#111}.result-table td{color:#111}}
+
+.audio-panel{margin-top:15px;padding:13px;border:1px solid #30435c;background:#0d1726;border-radius:13px;display:grid;gap:9px}.audio-panel-title{font-size:12px;font-weight:850}.audio-panel p,.audio-panel .field-hint{margin:0;color:#9eacc2;font-size:10px;line-height:1.5}.audio-panel input[type=file]{width:100%;font-size:11px;color:#b7c4d6}.audio-panel input[type=number]{width:100%;background:#101c2d;border:1px solid #30435c;border-radius:9px;color:#edf3fc;padding:9px}.audio-player{width:100%;height:38px}.audio-file-status{font-size:11px;color:#d5fa47}.sync-clock-note{margin-top:10px;border:1px solid #3c546e;background:#122238;border-radius:12px;padding:10px 13px;color:#c5d4e8;font-size:11px;line-height:1.55}.audio-active .live-badge{background:#17362e;border-color:#266b52;color:#a8f1d2}.audio-active .live-badge .status-dot{background:#49d7a0;box-shadow:0 0 0 4px #49d7a022}
+
+/* ===== v3 : en-tête, pied de page, thème ===== */
+:root{--label:#b5c0d2;--amber:#f5b942;color-scheme:dark}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);gap:26px;align-items:stretch;margin:4px 0 20px}
+.hero-main{display:flex;flex-direction:column;justify-content:center}
+.hero .accent{color:var(--lime)}
+.hero-dash{background:linear-gradient(145deg,#152238,#111b2b);border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.dash-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.dash-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:850}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.dash-tile{background:#0f1a2b;border:1px solid var(--line);border-radius:13px;padding:11px 13px;min-width:0}
+.dl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.dv{font-size:21px;font-weight:900;letter-spacing:-.03em;margin-top:4px;display:flex;align-items:center;gap:7px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ds{font-size:10.5px;color:var(--muted);margin-top:3px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;flex:none;background:#8a98ab}.dot.ok{background:var(--green);box-shadow:0 0 0 4px #49d7a022}.dot.warn{background:var(--amber)}.dot.off{background:var(--red)}
+html[data-view=live] .hero-dash,html[data-view=results] .hero-dash,html[data-view=live] .hero p,html[data-view=results] .hero p{display:none}
+html[data-view=live] .hero,html[data-view=results] .hero{grid-template-columns:1fr;margin:0 0 6px}
+html[data-view=live] .hero h1,html[data-view=results] .hero h1{font-size:22px;margin:4px 0 0}
+html[data-view=live] .hero h1 br,html[data-view=results] .hero h1 br{display:none}
+html[data-view=live] .hero .accent:before,html[data-view=results] .hero .accent:before{content:" "}
+.file-type{width:auto;min-width:34px;padding:0 7px}
+html[data-view=live] .steps,html[data-view=results] .steps{margin:12px 0}
+.modal{max-width:540px}
+.site-footer{margin-top:36px;padding:20px 0 8px;text-align:center;border-top:1px solid var(--line)}
+.about-link{background:none;border:0;padding:6px 12px;font-style:italic;font-size:15px;color:#8fa0b8;cursor:pointer;font-family:inherit}
+.about-link:hover{text-decoration:underline;color:var(--text)}
+.copy{margin-top:6px;font-size:14px;color:#6f8099}
+.about-sec{display:block;margin:0 0 12px}.about-sec b{display:block;color:var(--text);margin-bottom:3px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.dv{font-size:18px}}
+@media(max-width:560px){.dash-grid{gap:7px}.dash-tile{padding:9px 10px}.about-link{font-size:14px}}
+/* ===== Mode clair (plein soleil) ===== */
+html[data-theme=light]{color-scheme:light;--bg:#edf1f6;--panel:#fff;--panel2:#f3f6fa;--line:#c5d1e0;--text:#0d1a2c;--muted:#4a5b73;--lime:#2a7a00;--lime2:#1f6400;--blue:#0a64a8;--red:#c0282d;--green:#17885a;--amber:#a55c00;--label:#2c3e57;--shadow:0 10px 28px #1b3a6020}
+html[data-theme=light] body{background:radial-gradient(ellipse at 12% 0%,#d9e7f6 0,transparent 42%),var(--bg)}
+html[data-theme=light] .pill{background:#fff}
+html[data-theme=light] .brand-mark{color:#fff;box-shadow:0 6px 18px #2a7a0030}
+html[data-theme=light] .step-num{background:#fff}
+html[data-theme=light] .step{color:#5b6c84}html[data-theme=light] .step.active{color:var(--text)}
+html[data-theme=light] .step.active .step-num{background:var(--lime);color:#fff;border-color:var(--lime)}
+html[data-theme=light] .hero-dash,html[data-theme=light] .card{background:linear-gradient(145deg,#fff,#f6f9fc)}
+html[data-theme=light] .dash-tile{background:#f4f8fc}
+html[data-theme=light] .num-badge{background:#e3ecf6}
+html[data-theme=light] .live-title .num-badge{color:#fff!important}
+html[data-theme=light] .dropzone{background:#f5f8fc;border-color:#8ea3bd}html[data-theme=light] .dropzone.dragover{background:#e8f5d9}
+html[data-theme=light] .upload-icon{background:#e1eaf5}
+html[data-theme=light] .btn-primary{color:#fff}html[data-theme=light] .btn-primary:hover{background:var(--lime2)}
+html[data-theme=light] .btn-secondary{background:#e4ecf6;color:var(--text);border-color:#bccbdd}
+html[data-theme=light] .btn-ghost{color:#34465f;border-color:#b3c3d8}
+html[data-theme=light] .btn-danger{background:#fde6ea;color:#8e1a30;border-color:#eba9b8}
+html[data-theme=light] .file-info{background:#e7f5ee;border-color:#a9d6c0}html[data-theme=light] .file-type{background:#c9ecd9;color:#12553a}
+html[data-theme=light] .field label{color:var(--label)}
+html[data-theme=light] .field input,html[data-theme=light] .field select,html[data-theme=light] .search{background:#fff;border-color:#a9b9cf;color:var(--text)}
+html[data-theme=light] .field-hint{color:#52647c}
+html[data-theme=light] .protocol-note{background:#eaf4dd;color:#2e4424}
+html[data-theme=light] .count-pill{background:#e0efcc;color:#256400}
+html[data-theme=light] .student-list{background:#fff}html[data-theme=light] .student-row{border-bottom-color:#e1e8f2}
+html[data-theme=light] .student-row:hover{background:#eff5fb}html[data-theme=light] .student-index{color:#62748c}
+html[data-theme=light] .metric,html[data-theme=light] .result-kpi{background:#fff}
+html[data-theme=light] .live-badge{background:#fde6ea;border-color:#eba9b8;color:#9c1a33}
+html[data-theme=light] .track-shell{background:linear-gradient(145deg,#fff,#eff4fa)}
+html[data-theme=light] .track-labels{color:#4f6079}
+html[data-theme=light] .player-row{border-top-color:#dde6f1}
+html[data-theme=light] .player-name span{color:#4f6079}
+html[data-theme=light] .track-lane{background:repeating-linear-gradient(90deg,#e3ecf7 0,#e3ecf7 10px,#d9e5f3 10px,#d9e5f3 20px);border-color:#97abc6}
+html[data-theme=light] .track-lane:before{background:#587048;opacity:.75}
+html[data-theme=light] .runner{border-color:#fff;color:#fff;box-shadow:0 2px 8px #0000004d}
+html[data-theme=light] .runner.stopped{background:#7f8da1}
+html[data-theme=light] .lane-no{background:#fff;box-shadow:0 0 0 3px #fff}
+html[data-theme=light] .player-row.is-stopped .lane-no{border-color:#8796ab;color:#5f6f86}
+html[data-theme=light] .player-result.stopped-label{color:#5f6f86}
+html[data-theme=light] .name-btn:hover{background:#e6f0fa}html[data-theme=light] .name-btn:active{background:#d3e4f6}
+html[data-theme=light] .progress-wrap{background:#d3deec}
+html[data-theme=light] .progress-wrap::after{background:linear-gradient(90deg,transparent calc(25% - 1px),#fff calc(25% - 1px),#fff calc(25% + 1px),transparent calc(25% + 1px),transparent calc(50% - 1px),#fff calc(50% - 1px),#fff calc(50% + 1px),transparent calc(50% + 1px),transparent calc(75% - 1px),#fff calc(75% - 1px),#fff calc(75% + 1px),transparent calc(75% + 1px))}
+html[data-theme=light] .table-wrap{background:#fff}
+html[data-theme=light] .result-table th{background:#e6edf6;color:#2c3e57}
+html[data-theme=light] .result-table td{border-top-color:#dde6f1;color:#0f1e30}
+html[data-theme=light] .result-table tr:hover td{background:#eff5fb}
+html[data-theme=light] .status-tag{background:#e1e9f3;color:#2c3e57}
+html[data-theme=light] .status-tag.done{background:#d3f0e1;color:#0f6644}
+html[data-theme=light] .status-tag.pending{background:#fbe8c4;color:#74470a}
+html[data-theme=light] .np-row td{background:#edf1f6}html[data-theme=light] .np-row.absent td{background:#fde2e2}html[data-theme=light] .np-row.malade td{background:#ffefcf}html[data-theme=light] .np-row.dispense td{background:#dde9ff}html[data-theme=light] .np-row.autre td{background:#e7e7f1}
+html[data-theme=light] .modal,html[data-theme=light] .motif-modal{background:#fff;border-color:#bccbdd}
+html[data-theme=light] .modal-backdrop{background:#1b2a3dc4}
+html[data-theme=light] .motif-row{border-top-color:#dde6f1}
+html[data-theme=light] .chip{background:#edf3fa;color:#14263b;border-color:#a9b9cf}html[data-theme=light] .chip.on{background:var(--lime);color:#fff;border-color:var(--lime)}
+html[data-theme=light] .motif-other{background:#fff;border-color:#a9b9cf}
+html[data-theme=light] .countdown{background:#f1f5fbf2}html[data-theme=light] .countdown p{color:#1a2b40}html[data-theme=light] .countdown .count-number{text-shadow:none}
+html[data-theme=light] .toast{background:#12233a;color:#fff}
+html[data-theme=light] .smallprint{color:#52647c}
+html[data-theme=light] .rotate-note{background:#eaf4dd;color:#2e4424}html[data-theme=light] .rotate-note b{color:var(--lime)}
+html[data-theme=light] .audio-panel{background:#f5f8fc;border-color:#b3c3d8}
+html[data-theme=light] .audio-panel p,html[data-theme=light] .audio-panel .field-hint{color:#4a5b73}
+html[data-theme=light] .audio-panel input[type=file]{color:#2c3e57}
+html[data-theme=light] .audio-panel input[type=number]{background:#fff;border-color:#a9b9cf;color:var(--text)}
+html[data-theme=light] .audio-file-status{color:#256400}
+html[data-theme=light] .sync-clock-note{background:#eaf1f9;border-color:#a9bdd6;color:#243850}
+html[data-theme=light] .audio-active .live-badge{background:#dcf2e6;border-color:#9fd1b8;color:#10633f}
+html[data-theme=light] .about-link{color:#566a85}html[data-theme=light] .copy{color:#7b8aa0}
+html[data-theme=light] .site-footer{border-top-color:#c5d1e0}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">P</div><div><div class="brand-name">PACE <span style="color:var(--lime)">/</span> EPS LAB</div><div class="brand-sub">Luc Léger · Test navette 20 m</div></div></div>
+    <div class="top-actions"><span class="pill"><span class="status-dot"></span> Fonctionne dans le navigateur</span><button class="btn btn-ghost btn-small theme-toggle" id="themeBtn" type="button" aria-label="Changer de thème">☀ Mode clair</button><button class="btn btn-ghost btn-small" id="helpBtn" type="button">ⓘ Mode d'emploi</button></div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-main"><div class="eyebrow">Outil de terrain pour professeurs d'EPS</div><h1>Le test Luc Léger.<br><span class="accent">Plus simple à piloter.</span></h1><p>Importe ta liste (Excel, CSV ou Massar), lance la bande-son officielle, suis les élèves sur le terrain animé et enregistre leur palier, leur repère de 15 s et leur VMA d'un simple toucher.</p></div>
+    <div class="hero-dash" aria-label="État de la séance">
+      <div class="dash-head"><span class="dash-title">Tableau de bord</span><span class="pill">◉ <span id="globalState">Prêt pour une séance</span></span></div>
+      <div class="dash-grid">
+        <div class="dash-tile"><div class="dl">Classe</div><div class="dv" id="dashClass" dir="auto">—</div><div class="ds" id="dashFile">Aucune liste importée</div></div>
+        <div class="dash-tile"><div class="dl">Élèves</div><div class="dv" id="dashStudents">0</div><div class="ds" id="dashSelected">0 coché</div></div>
+        <div class="dash-tile"><div class="dl">Bande-son</div><div class="dv"><span class="dot off" id="dashAudioDot"></span><span id="dashAudio">Non chargée</span></div><div class="ds" id="dashAudioSub">Télécharge la piste avant le test</div></div>
+        <div class="dash-tile"><div class="dl">Groupe</div><div class="dv" id="dashGroup">1</div><div class="ds" id="dashTested">0 testé</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="steps" aria-label="Étapes de la séance"><div class="step active" id="step1"><span class="step-num">1</span> Préparer</div><div class="step-line"></div><div class="step" id="step2"><span class="step-num">2</span> Faire passer le test</div><div class="step-line"></div><div class="step" id="step3"><span class="step-num">3</span> Exporter</div></div>
+
+  <section id="setupView" class="setup-view">
+    <div class="grid-setup">
+      <div class="card">
+        <div class="card-head"><div><div class="card-title">Importer la classe</div><div class="card-desc">Charge un fichier Excel/CSV, ou la liste exportée de <b>Massar</b> (noms en arabe, classe lue dans le nom du fichier). L'ordre des lignes sera conservé dans les exports.</div></div><div class="num-badge">01</div></div>
+        <div id="dropzone" class="dropzone">
+          <div class="upload-icon">↥</div><strong>Glisse ton fichier ici</strong><p>Formats acceptés : .xlsx, .xls, .csv (le CSV marche aussi sans Internet)<br>La première feuille du classeur sera utilisée.</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn btn-secondary" id="chooseFileBtn" type="button">Choisir un fichier (Excel / CSV)</button><button class="btn btn-primary" id="chooseMassarBtn" type="button">📥 Importer une liste Massar (.xlsx)</button></div><input id="fileInput" type="file" accept=".xlsx,.xls,.csv" hidden><input id="massarInput" type="file" accept=".xlsx,.xls" hidden></div>
+        <div id="fileInfo" class="file-info"><div class="file-type">XLSX</div><div class="file-meta"><strong id="fileName">Liste importée</strong><span id="fileCount">0 élèves détectés</span></div><button id="removeFileBtn" class="btn btn-ghost btn-small" type="button" aria-label="Retirer le fichier">✕</button></div>
+        <div class="field-grid">
+          <div class="field"><label for="startSpeed">Vitesse de départ (km/h)</label><input id="startSpeed" type="number" min="5" max="15" step="0.5" value="8.5"><span class="field-hint">Bande-son Luc Léger officielle : départ à 8,5 km/h (palier 1), +0,5 km/h par palier.</span></div>
+          <div class="field"><label for="speedIncrement">Progression (km/h)</label><input id="speedIncrement" type="number" min="0.1" max="2" step="0.1" value="0.5"><span class="field-hint">Augmentation entre les paliers.</span></div>
+          <div class="field"><label for="levelDuration">Durée d'un palier (sec.)</label><input id="levelDuration" type="number" min="30" max="180" step="5" value="60"><span class="field-hint">Utilisée seulement avec les bips intégrés.</span></div>
+          <div class="field"><label for="shuttleLength">Distance entre lignes (m)</label><input id="shuttleLength" type="number" min="10" max="50" step="1" value="20"><span class="field-hint">La bande-son standard exige 20 m.</span></div>
+        </div>
+        <div class="audio-panel">
+          <div class="audio-panel-title">🔊 Synchronisation avec une vraie bande-son</div>
+          <p>Le son est lu par le lecteur de cette page (tu l'entends en même temps que l'animation) et son horloge pilote les avatars. <b>La bande-son est d'abord téléchargée en entier dans l'appareil</b>, puis lue depuis sa mémoire : aucune coupure possible pendant le test, même si le réseau tombe.</p>
+          <div class="audio-source-row" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 8px">
+            <button id="downloadTrackBtn" class="btn btn-primary btn-small" type="button">① ⬇ Télécharger la bande-son dans l'appareil</button>
+          </div>
+          <div id="dlWrap" class="hidden" style="height:7px;background:var(--line);border-radius:5px;overflow:hidden;margin:0 0 8px"><div id="dlBar" style="height:100%;width:0;background:var(--lime);transition:width .2s"></div></div>
+          <details style="margin:4px 0 8px"><summary style="cursor:pointer;font-size:11px;color:var(--label);font-weight:750">Le téléchargement automatique échoue ? Importer le MP3 à la main</summary>
+            <div style="margin-top:8px"><a id="downloadMp3Link" href="https://fitdistance.io/assets/audio/luc-leger-20mn.mp3" download="luc-leger-20mn.mp3" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small" style="text-decoration:none">⬇ Ouvrir / télécharger le MP3</a></div>
+            <label for="audioFile" style="display:block;font-size:11px;color:var(--label);font-weight:750;margin:8px 0">② Importer le MP3 téléchargé depuis l'ordinateur</label>
+            <input id="audioFile" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg" aria-label="Importer le MP3 du test Luc Léger">
+          </details>
+          <div class="field-hint" style="margin:0 0 8px">ⓘ La bande-son du test Luc Léger est protégée par le droit d'auteur : elle n'est pas incluse dans cette page. Elle est téléchargée sur ton appareil pour un <b>usage personnel ou scolaire</b>, sans redistribution ni usage commercial.</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div id="audioFileStatus" class="audio-file-status" style="flex:1">Aucune bande-son importée — clique sur « Télécharger la bande-son dans l’appareil ».</div><button id="clearAudioBtn" class="btn btn-ghost btn-small" type="button">Retirer la bande-son</button><button id="forgetTrackBtn" class="btn btn-ghost btn-small hidden" type="button" title="Supprime la copie gardée sur cet appareil">Supprimer de l’appareil</button></div>
+          <audio id="referenceAudio" class="audio-player hidden" controls preload="metadata"></audio>
+          
+          <div class="field"><label for="palierNumbering">Numérotation des paliers</label><select id="palierNumbering"><option value="voice" selected>Comme la voix : « palier 1 » annoncé à ≈ 1:06 (la 1re minute à 8,5 km/h = échauffement É)</option><option value="first">Palier 1 dès le premier bip (8,5 km/h)</option></select><span class="field-hint">Le palier affiché change <b>exactement quand la voix l'annonce</b>, et les repères « 15 / 30 / 45 s » suivent aussi la voix. Si, à l'écoute, la voix dit « palier 2 » quand l'écran affiche « palier 1 », choisis la 2e option.</span></div>
+          <div class="field"><label for="audioStartOffset">Début du mouvement dans la bande-son (secondes)</label><input id="audioStartOffset" type="number" min="0" max="600" step="0.01" value="8.41"><span class="field-hint">Réglé <b>automatiquement</b> quand la piste est reconnue : premier bip à 8,41 s (luc-leger-20mn.mp3) ou 7,39 s (audio officiel 20 min). Si l’avatar paraît en avance ou en retard sur le son, ajuste de quelques centièmes ; pendant le test, utilise aussi les boutons ± de la barre « Horloge audio ».</span></div>
+          <div class="field-hint" style="margin-top:8px">Calibration : les 221 bips des deux pistes de 20 min (audio officiel 20:10 et luc-leger-20mn 20:26, structure identique à 6 ms près) ont été détectés dans le signal audio : 20 paliers de 8,5 à 18,0 km/h, 220 navettes. L’animation suit donc les vrais instants des bips. Valable pour ces deux pistes ; une autre piste doit être mesurée.</div>
+        </div>
+        <div class="protocol-note"><b>Important :</b> la synchronisation suppose le protocole Luc Léger de 20 m, départ à 8,5 km/h et +0,5 km/h par palier, avec la répartition des navettes de cette version. Les variantes PACER/Eurofit ou une bande-son différente peuvent décaler les paliers. Le professeur doit vérifier la concordance avant d'utiliser les résultats pour une note officielle.</div>
+      </div>
+      <div class="card students-card">
+        <div class="card-head"><div><div class="card-title">Sélectionner les participants</div><div class="card-desc">Coche les élèves du groupe qui court maintenant (un couloir par élève, numéroté dans l'ordre). Les autres seront traités après le test : testés dans un autre groupe, ou absent / malade / dispensé.</div></div><div class="num-badge">02</div></div>
+        <div class="student-tools"><input id="studentSearch" class="search" type="search" placeholder="Rechercher un élève ou une classe…" aria-label="Rechercher un élève"><span class="count-pill"><span id="selectedCount">0</span> sélectionné(s)</span><button id="selectAllBtn" class="btn btn-ghost btn-small" type="button">Tout cocher</button><button id="selectNoneBtn" class="btn btn-ghost btn-small" type="button">Tout décocher</button><button id="selectNextBtn" class="btn btn-ghost btn-small" type="button" title="Coche les 15 prochains élèves pas encore testés">15 suivants</button></div>
+        <div id="studentList" class="student-list"><div class="empty-list">Aucun fichier importé.<br><b>Importe d'abord la liste Excel</b> pour afficher les élèves ici.</div></div>
+        <div class="setup-footer"><div class="helper">Les élèves restent dans l'ordre du fichier d'origine. Avant l'affichage des résultats, la page te demandera le motif des élèves qui n'ont pas couru (absent, malade, dispensé, autre).</div><button id="startBtn" class="btn btn-primary start-btn" type="button" disabled>Lancer la séance <span>→</span></button></div>
+      </div>
+    </div>
+    <div class="smallprint">Confidentialité : cette version traite la liste directement dans ton navigateur. Elle ne transmet pas les données à un serveur. Évite toutefois d'utiliser un appareil partagé sans fermer la page après la séance.</div>
+  </section>
+
+  <section id="liveView" class="live-view hidden">
+    <div class="rotate-note"><b>Conseil :</b> tourne le téléphone en paysage pour profiter au mieux du terrain animé.</div>
+    <div class="live-head"><div class="live-title"><div class="num-badge" style="background:var(--lime);color:#111827;width:42px;height:42px">▶</div><div><h2>Terrain de test<span id="groupLabel" style="color:var(--muted);font-weight:600"></span></h2><p><span id="liveParticipantCount">0</span> participants · Toucher le <b>nom</b> d’un élève pour enregistrer son arrêt.</p></div></div><div class="live-badge"><span class="status-dot"></span><span id="liveStatusText">PRÊT</span></div></div>
+    <div class="metrics"><div class="metric"><div class="metric-label">Temps écoulé</div><div class="metric-value" id="elapsedTime">00:00</div></div><div class="metric"><div class="metric-label">Palier actuel</div><div class="metric-value"><span id="currentLevel">01</span> <small id="quarterLabel"></small></div></div><div class="metric"><div class="metric-label">Vitesse cible</div><div class="metric-value"><span id="currentSpeed">8.5</span> <small>km/h</small></div></div><div class="metric"><div class="metric-label">Élèves arrêtés</div><div class="metric-value"><span id="stoppedCount">0</span><small> / <span id="totalLiveCount">0</span></small></div></div></div>
+    <div class="progress-wrap"><div class="progress-bar" id="levelProgress"></div></div>
+    <div class="track-shell"><div class="track-top"><strong>SIMULATION DU TERRAIN <span style="color:var(--muted);font-weight:500">· <span id="trackDistance">20</span> mètres</span></strong><div class="track-ends"><span><span class="cone-icon">▲</span> LIGNE A</span><span style="color:#51647c">↔</span><span><span class="cone-icon">▲</span> LIGNE B</span><span class="pill" style="padding:5px 8px">🔊 Bips <span id="soundLabel">activés</span></span></div></div><div class="track-labels"><span>Élève · toucher le nom</span><span style="text-align:center" title="Numéro de couloir">N°</span><span>Déplacement animé</span><span style="text-align:right">Résultat</span></div><div id="trackBoard" class="track-board"></div></div>
+    <div id="audioClockNote" class="sync-clock-note hidden">🔗 <b>Horloge audio active :</b> les avatars suivent la position de lecture de la bande-son. Ne déplace pas le curseur du lecteur pendant le test. <span style="white-space:nowrap">Recalage avatars : <button type="button" class="btn btn-ghost btn-small" data-nudge="-0.05">−0,05 s</button> <button type="button" class="btn btn-ghost btn-small" data-nudge="0.05">+0,05 s</button> <b id="nudgeValue"></b></span></div>
+    <div class="live-controls"><div class="controls-left"><button id="pauseBtn" class="btn btn-secondary" type="button">Ⅱ Pause</button><button id="soundBtn" class="btn btn-secondary" type="button">🔊 Son : oui</button><button id="undoBtn" class="btn btn-ghost" type="button" disabled>↶ Annuler dernier arrêt</button></div><div class="controls-right"><button class="btn btn-ghost theme-toggle" id="themeBtnLive" type="button" aria-label="Changer de thème">☀ Mode clair</button><button id="nextGroupLiveBtn" class="btn btn-primary hidden" type="button">⏭ Groupe suivant</button><button id="finishBtn" class="btn btn-danger" type="button">Terminer la séance ↗</button></div></div>
+    <div class="notice">Le bip marque le changement de direction dans cette simulation. Un arrêt enregistré contient le palier en cours, les navettes comptées, la vitesse cible et le temps écoulé. Le suivi visuel est une aide de pilotage et ne remplace pas la bande-son officielle utilisée lors d'une épreuve standardisée.</div>
+  </section>
+
+  <section id="resultsView" class="results-view hidden">
+    <div class="results-top"><div><div class="eyebrow">Séance terminée</div><h2>Résultats de la classe</h2><p id="resultSubtitle">Les résultats sont affichés dans l'ordre du fichier importé.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button id="backBtn" class="btn btn-secondary" type="button">← Retour à la préparation</button><button id="nextGroupBtn" class="btn btn-primary" type="button">＋ Tester un autre groupe</button><button id="newSessionBtn" class="btn btn-ghost" type="button">Nouvelle séance</button></div></div>
+    <div class="result-kpis"><div class="result-kpi"><div class="klabel">Élèves importés</div><div id="kpiAll" class="kvalue">0</div></div><div class="result-kpi"><div class="klabel">Participants</div><div id="kpiSelected" class="kvalue">0</div></div><div class="result-kpi"><div class="klabel">Arrêts enregistrés</div><div id="kpiStopped" class="kvalue" style="color:var(--lime)">0</div></div></div>
+    <div class="table-wrap"><table class="result-table"><thead><tr><th>#</th><th>Nom et prénom</th><th>Classe</th><th>Couloir</th><th>Participant</th><th>Palier enregistré</th><th>Navettes du palier</th><th>Vitesse du palier (km/h)</th><th>Repère (voix)</th><th>VMA affinée (km/h)</th><th>Navettes cumulées</th><th>Temps</th><th>Observation</th></tr></thead><tbody id="resultTableBody"></tbody></table></div>
+    <div class="result-actions"><div class="helper" style="font-size:11px;color:var(--muted);line-height:1.5">L'export Excel conserve toutes les lignes d'origine et ajoute les résultats. L'export PDF (via l'impression « Enregistrer au format PDF », compatible avec l'arabe) résume les colonnes essentielles.</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button id="exportExcelBtn" class="btn btn-primary" type="button">⇩ Exporter Excel (.xlsx)</button><button id="exportPdfBtn" class="btn btn-secondary" type="button">⇩ Exporter PDF</button></div></div>
+  </section>
+  <footer class="site-footer"><button id="aboutBtn" class="about-link" type="button">À propos de nous</button><div class="copy" id="copyLine">© 2027 EPSMART — Tous droits réservés</div></footer>
+</div>
+<div id="motifBackdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="motifTitle"><div class="motif-modal"><h3 id="motifTitle" style="margin:0 0 6px">Élèves qui n'ont pas couru</h3><p style="margin:0 0 6px;color:var(--muted);font-size:13px;line-height:1.5">Indique le motif de chacun : il sera inscrit dans les résultats et dans le PDF (ligne colorée sur toute la largeur).</p><div class="motif-bulk"><span>Tous les restants :</span><button class="chip" data-bulk="Absent" type="button">Absent</button><button class="chip" data-bulk="Malade" type="button">Malade</button><button class="chip" data-bulk="Dispensé" type="button">Dispensé</button><button class="chip" data-bulk="later" type="button">Plus tard</button></div><div id="motifList"></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-top:14px"><span id="motifMissing" style="font-size:12px;color:var(--muted)"></span><div style="display:flex;gap:8px;flex-wrap:wrap"><button id="motifBackBtn" class="btn btn-secondary" type="button">← Retour au test</button><button id="motifNextBtn" class="btn btn-secondary hidden" type="button">⏭ Groupe suivant (sans motif)</button><button id="motifOkBtn" class="btn btn-primary" type="button">Valider et voir les résultats</button></div></div></div></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="countdown" class="countdown hidden"><div><div class="count-number" id="countdownNumber">3</div><p>Préparez-vous · le test commence</p></div></div>
+<div id="modalBackdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><h3 id="modalTitle">Mode d'emploi</h3><p id="modalText">Importe une feuille Excel avec une ligne d'en-têtes, sélectionne les participants et lance le test. Pendant l'épreuve, touche le nom de l'élève qui s'arrête. À la fin, exporte les résultats en Excel ou en PDF.</p><div class="modal-actions"><button id="modalClose" class="btn btn-primary" type="button">Compris</button></div></div></div>
+<script>
+// Bibliothèque optionnelle (export .xlsx ; la lecture .xlsx et le PDF fonctionnent sans bibliothèque) : on essaie d'abord le dossier « lib/ » à côté de la page (hors ligne),
+// puis Internet. Si rien n'est disponible, la page utilise ses outils intégrés (CSV + impression PDF) et reste 100 % fonctionnelle hors ligne.
+(function(){function load(local,cdn){return new Promise(res=>{const t=(u,next)=>{const e=document.createElement('script');e.src=u;e.async=false;e.onload=()=>res(true);e.onerror=()=>next?next():res(false);document.head.appendChild(e);};t(local,()=>t(cdn,null));});}
+load('lib/xlsx.full.min.js','https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js');
+})();
+</script>
+<script>
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const state={students:[],headers:[],filename:'',stage:'setup',started:false,paused:false,sound:true,sessionStart:0,lastBeepAt:0,nextBeepAt:0,level:1,speed:8.0,shuttleLength:20,levelDuration:60,speedIncrement:.5,startSpeed:8.0,shuttlesTotal:0,shuttlesInLevel:0,eventLevel:1,direction:1,raf:0,countdownTimer:0,stopHistory:[],audioCtx:null,lastToastTimer:0,referenceAudio:null,audioObjectURL:'',audioMode:false,audioStartOffset:0,audioTimeline:[],audioTimelineDuration:0};
+const SIGNATURE='© 2027 EPSMART — Tous droits réservés';
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('epsmart-theme',t);}catch(e){}
+ document.querySelectorAll('.theme-toggle').forEach(b=>b.textContent=t==='light'?'🌙 Mode sombre':'☀ Mode clair');
+ const m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#edf1f6':'#101827');}
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'dark':'light');}
+function updateHero(){
+ if(!document.getElementById('dashClass'))return;
+ const st=state.students,cls=[...new Set(st.map(x=>x.className).filter(Boolean))];
+ $('dashClass').textContent=cls.length?cls.join(', '):'—';$('dashFile').textContent=state.filename||'Aucune liste importée';
+ $('dashStudents').textContent=st.length;const sel=st.filter(x=>x.selected).length;$('dashSelected').textContent=sel+' coché'+(sel>1?'s':'');
+ const tested=st.filter(x=>x.result).length;$('dashGroup').textContent=state.group||1;$('dashTested').textContent=tested+' testé'+(tested>1?'s':'')+' / '+st.length;
+ const ready=typeof trackReady==='function'&&trackReady();
+ $('dashAudio').textContent=ready?'Prête':(state.audioMode?'Chargement…':'Non chargée');
+ $('dashAudioDot').className='dot '+(ready?'ok':state.audioMode?'warn':'off');
+ $('dashAudioSub').textContent=ready?'En mémoire · aucune coupure possible':(state.audioMode?'Patiente quelques secondes':'Télécharge la piste avant le test');
+}
+function openAbout(){$('modalTitle').textContent='À propos de nous';
+ $('modalText').innerHTML=`<span class="about-sec"><b>EPSMART</b>Des outils numériques pensés pour les professeurs d’EPS : simples à utiliser sur le terrain, même avec peu ou pas de connexion.</span><span class="about-sec"><b>Cet outil : test Luc Léger (navette 20 m)</b>Il synchronise la bande-son officielle avec une animation du terrain, enregistre l’arrêt de chaque élève (palier, repère de 15 s, VMA) et exporte les résultats en Excel ou en PDF.</span><span class="about-sec"><b>Tes données restent chez toi</b>La liste d’élèves est traitée dans le navigateur de cet appareil. Elle n’est envoyée à aucun serveur.</span><span class="about-sec"><b>Bande-son</b>Protégée par le droit d’auteur, elle n’est pas incluse dans l’outil : elle est téléchargée sur l’appareil pour un usage personnel ou scolaire.</span><span class="about-sec">Conception : Radouane Imrani</span><span class="about-sec" style="color:var(--muted)">${SIGNATURE}</span>`;
+ $('modalBackdrop').classList.remove('hidden');}
+function canAuto(x){return !x.result&&(!x.motif||x.motif==='later');}
+function closeRun(m){releaseAwake();if(state.audioMode&&state.referenceAudio)state.referenceAudio.pause();state.started=false;state.paused=false;cancelAnimationFrame(state.raf);clearTimeout(state.countdownTimer);$('countdown').classList.add('hidden');selectedStudents().filter(x=>!x.result).forEach(x=>{x.result={...m,source:'Séance clôturée'};x.status='closed';});}
+function goNextGroup(){
+ state.students.forEach(x=>{if(x.result)x.selected=false;});
+ if(!state.students.some(canAuto)){showToast('Tous les élèves sont passés (ou ont un motif).');renderResults();setView('results');return;}
+ state.group=(state.group||1)+1;
+ state.students.forEach(x=>{x.selected=false;});let n=0;for(const x of state.students){if(canAuto(x)&&n<15){x.selected=true;n++;}}
+ renderStudents();setView('setup');showToast(`Groupe ${state.group} : ${n} élève(s) cochés (couloirs 1 à ${n}). Vérifie la sélection puis lance le test.`);
+}
+function nextGroupFromLive(){
+ if(!state.started)return;const remaining=selectedStudents().filter(x=>!x.result).length;
+ if(remaining&&!confirm(`${remaining} élève(s) n’ont pas été arrêtés individuellement : leur palier actuel sera enregistré (« Séance clôturée »). Terminer ce groupe et passer au suivant ?`))return;
+ closeRun(currentMetrics());goNextGroup();
+}
+function showToast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(state.lastToastTimer);state.lastToastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
+function norm(s){return String(s??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function matchesHeader(headers,patterns){const exact=headers.find(h=>patterns.some(p=>norm(h)===p));if(exact)return exact;const ordered=[...patterns].sort((a,b)=>b.length-a.length);return headers.find(h=>ordered.some(p=>norm(h).includes(p)))||''}
+function parseRows(json,headers){
+ const allNorm=headers.map(h=>[h,norm(h)]);
+ let full=matchesHeader(headers,['nom et prenom','nom prenom','nom complet','fullname','eleve','nom de l eleve','student name','name']);
+ let last=matchesHeader(headers,['nom','last name','lastname','family name']);
+ let first=matchesHeader(headers,['prenom','first name','firstname','given name']);
+ let cl=matchesHeader(headers,['classe','class','groupe','group','niveau','section']);
+ let sex=matchesHeader(headers,['sexe','genre','sex','gender']);
+ if(!full && last && first){full='';}
+ const rawRows=[];
+ json.forEach((raw,idx)=>{
+  const vals=Object.values(raw);if(!vals.some(v=>String(v??'').trim()!==''))return;
+  let display='';
+  if(full)display=String(raw[full]??'').trim();
+  else if(last&&first)display=[String(raw[first]??'').trim(),String(raw[last]??'').trim()].filter(Boolean).join(' ');
+  else {const candidate=headers.find(h=>String(raw[h]??'').trim()!=='');display=candidate?String(raw[candidate]).trim():'';}
+  if(!display)display=`Élève ${idx+1}`;
+  rawRows.push({id:rawRows.length+1,sourceRow:idx+2,displayName:display,className:cl?String(raw[cl]??'').trim():'',sex:sex?String(raw[sex]??'').trim():'',raw:{...raw},selected:true,result:null,status:'active',position:0,rawHeaders:[...headers]});
+ });
+ return rawRows;
+}
+function renderStudents(){
+ const list=$('studentList'),q=norm($('studentSearch').value);const filtered=state.students.filter(s=>!q&&!$('studentSearch').value.trim()||norm(s.displayName+' '+s.className).includes(q)||String(s.displayName).includes($('studentSearch').value.trim()));
+ if(!state.students.length){list.innerHTML='<div class="empty-list">Aucun fichier importé.<br><b>Importe d’abord la liste Excel</b> pour afficher les élèves ici.</div>';}
+ else if(!filtered.length){list.innerHTML='<div class="empty-list">Aucun élève ne correspond à la recherche.</div>';}
+ else{list.innerHTML=filtered.map(s=>`<label class="student-row ${s.result?'tested':''}"><input type="checkbox" data-student="${s.id}" ${s.selected?'checked':''} ${s.result?'disabled':''} aria-label="Sélectionner ${escapeHTML(s.displayName)}"><span class="student-index">${String(s.id).padStart(2,'0')}</span><span class="student-ident"><strong dir="auto">${escapeHTML(s.displayName)}</strong><span>${escapeHTML(s.className||s.sex||'Classe non renseignée')}</span></span>${s.result?`<span class="tested-tag">✓ testé · VMA ${vmaText(s.result)}</span>`:(s.motif&&s.motif!=='later'?`<span class="tested-tag" style="color:var(--muted)">${escapeHTML(motifLabel(s))}</span>`:'')}</label>`).join('');list.querySelectorAll('input[data-student]').forEach(cb=>cb.addEventListener('change',()=>{const s=state.students.find(x=>x.id===Number(cb.dataset.student));if(s)s.selected=cb.checked;updateSelectionCount()}));}
+ updateSelectionCount();
+}
+function escapeHTML(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function updateSelectionCount(){if(typeof updateHero==='function')updateHero();const n=state.students.filter(s=>s.selected).length;$('selectedCount').textContent=n;$('startBtn').disabled=n===0||state.students.length===0;$('globalState').textContent=state.students.length?`${state.students.length} élèves importés`:'Prêt pour une séance'}
+function resetImport(){state.massar=false;state.students=[];state.headers=[];state.filename='';$('fileInput').value='';$('fileInfo').classList.remove('visible');$('studentSearch').value='';renderStudents()}
+// ---------- Lecture .xlsx SANS bibliothèque (fonctionne hors ligne) : zip + deflate natif du navigateur ----------
+async function zipEntries(buf){
+ const u8=new Uint8Array(buf),dv=new DataView(buf);let e=u8.length-22;while(e>=0&&dv.getUint32(e,true)!==0x06054b50)e--;
+ if(e<0)throw new Error('Fichier .xlsx invalide.');
+ const n=dv.getUint16(e+10,true);let p=dv.getUint32(e+16,true);const map={};
+ for(let i=0;i<n;i++){if(dv.getUint32(p,true)!==0x02014b50)break;const method=dv.getUint16(p+10,true),csize=dv.getUint32(p+20,true),nl=dv.getUint16(p+28,true),xl=dv.getUint16(p+30,true),cl=dv.getUint16(p+32,true),lho=dv.getUint32(p+42,true);const name=new TextDecoder().decode(u8.subarray(p+46,p+46+nl));map[name]={method,csize,lho};p+=46+nl+xl+cl;}
+ return {u8,dv,map};
+}
+async function zipText(z,name){
+ const en=z.map[name];if(!en)return null;const lh=en.lho;const start=lh+30+z.dv.getUint16(lh+26,true)+z.dv.getUint16(lh+28,true);const data=z.u8.subarray(start,start+en.csize);
+ if(en.method===0)return new TextDecoder().decode(data);
+ if(typeof DecompressionStream==='undefined')throw new Error('Ce navigateur ne sait pas ouvrir les .xlsx hors ligne : enregistre la liste en CSV.');
+ const out=await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer();return new TextDecoder().decode(out);
+}
+function colIdx(ref){const m=/^([A-Z]+)/.exec(ref);let n=0;for(const ch of m[1])n=n*26+ch.charCodeAt(0)-64;return n-1;}
+async function xlsxGrids(buf){
+ const z=await zipEntries(buf),dp=new DOMParser();
+ const doc=t=>dp.parseFromString(t,'application/xml');
+ const shared=[];const ss=await zipText(z,'xl/sharedStrings.xml');
+ if(ss)doc(ss).querySelectorAll('si').forEach(si=>{shared.push([...si.querySelectorAll('t')].map(t=>t.textContent).join(''));});
+ const wbx=doc(await zipText(z,'xl/workbook.xml')),rels=doc(await zipText(z,'xl/_rels/workbook.xml.rels'));
+ const relMap={};rels.querySelectorAll('Relationship').forEach(r=>relMap[r.getAttribute('Id')]=r.getAttribute('Target'));
+ const sheets=[];
+ for(const sh of wbx.querySelectorAll('sheet')){
+  const rid=sh.getAttribute('r:id')||sh.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id');let t=relMap[rid]||'';t=t.replace(/^\/?(xl\/)?/,'');
+  const xml=await zipText(z,'xl/'+t);if(!xml)continue;const sd=doc(xml);const grid=[];
+  sd.querySelectorAll('sheetData > row').forEach(row=>{const r=Number(row.getAttribute('r'))-1;const arr=grid[r]=grid[r]||[];
+   row.querySelectorAll(':scope > c').forEach(c=>{const ci=colIdx(c.getAttribute('r')),ty=c.getAttribute('t');let v;
+    if(ty==='inlineStr')v=[...c.querySelectorAll('t')].map(x=>x.textContent).join('');
+    else{const ve=c.querySelector('v');v=ve?ve.textContent:'';if(ty==='s')v=shared[Number(v)]??'';}
+    arr[ci]=v;});});
+  sheets.push({name:sh.getAttribute('name'),grid});
+ }
+ return sheets;
+}
+// ---------- Format Massar (export des notes) ----------
+function normAr(t){return String(t??'').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[إأآٱ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').trim();}
+function massarClassFromFilename(name){
+ const base=String(name||'').replace(/\.[^.]+$/,'');const tk=base.split(/[_\s]+/).filter(Boolean);
+ const i=tk.findIndex(t=>/notes?/i.test(t));
+ for(const t of (i>=0?tk.slice(i+1):tk)){if(/^\d+$/.test(t)||/^\(\d+\)$/.test(t))continue;if(/[A-Za-z\u0600-\u06FF]/.test(t))return t;}
+ return '';
+}
+function parseMassarGrid(grid,filename){
+ let hr=-1,cName=-1,cCode=-1,cBirth=-1,cId=-1;
+ for(let r=0;r<Math.min(grid.length,60);r++){const row=grid[r];if(!row)continue;
+  row.forEach((v,c)=>{const t=normAr(v);if(!t)return;
+   if(/^اسم التلميذ|^اسم الطالب/.test(t)){hr=r;cName=c;}
+   if(/^رقم التلميذ|^رمز التلميذ|^رقم الطالب/.test(t)&&cCode<0)cCode=c;
+   if(/تاريخ الازدياد/.test(t)&&cBirth<0)cBirth=c;
+   if(t==='ID'&&cId<0)cId=c;});
+  if(hr>=0)break;}
+ if(hr<0)return null;
+ for(let r=Math.max(0,hr-3);r<=hr+1;r++){const row=grid[r]||[];row.forEach((v,c)=>{const t=normAr(v);if(cId<0&&t==='ID')cId=c;if(cCode<0&&/^رقم التلميذ/.test(t))cCode=c;if(cBirth<0&&/تاريخ الازدياد/.test(t))cBirth=c;});}
+ let cls=massarClassFromFilename(filename);
+ if(!cls){for(const row of grid.slice(0,30)){if(!row)continue;row.forEach((v,c)=>{if(!cls&&/^القسم/.test(normAr(v))){for(let k=c+1;k<row.length;k++){if(String(row[k]??'').trim()){cls=String(row[k]).trim();break;}}}});}}
+ const out=[];let empty=0;
+ for(let r=hr+1;r<grid.length;r++){const row=grid[r]||[];const nm=String(row[cName]??'').trim();
+  if(!nm){if(out.length&&++empty>=3)break;continue;}empty=0;
+  if(/^(النقطة|التغيب|ملاحظات)/.test(normAr(nm)))continue;
+  out.push({id:out.length+1,sourceRow:r+1,displayName:nm,className:cls,sex:'',selected:false,result:null,status:'unselected',position:0,
+   raw:{'Classe':cls,'Nom (Massar)':nm,'Code élève (Massar)':String(row[cCode]??'').trim(),'ID Massar':String(row[cId]??'').trim(),'Date de naissance':String(row[cBirth]??'').trim()},
+   rawHeaders:['Classe','Nom (Massar)','Code élève (Massar)','ID Massar','Date de naissance']});}
+ return out.length?{students:out,className:cls}:null;
+}
+function csvToRows(buf){
+ let txt=new TextDecoder('utf-8').decode(buf);if(txt.includes('\uFFFD'))txt=new TextDecoder('windows-1252').decode(buf);txt=txt.replace(/^\uFEFF/,'');
+ const first=txt.split(/\r?\n/,1)[0]||'';const delim=[';','\t',','].map(d=>[d,first.split(d).length]).sort((a,b)=>b[1]-a[1])[0][0];
+ const out=[];let row=[],cur='',q=false;
+ for(let i=0;i<txt.length;i++){const c=txt[i];
+  if(q){if(c==='"'){if(txt[i+1]==='"'){cur+='"';i++;}else q=false;}else cur+=c;}
+  else if(c==='"')q=true;else if(c===delim){row.push(cur);cur='';}
+  else if(c==='\n'||c==='\r'){if(c==='\r'&&txt[i+1]==='\n')i++;row.push(cur);cur='';if(row.some(x=>String(x).trim()!==''))out.push(row);row=[];}
+  else cur+=c;}
+ row.push(cur);if(row.some(x=>String(x).trim()!==''))out.push(row);
+ if(out.length<2)return [];
+ const heads=out[0].map((h,i)=>String(h).trim()||('Colonne '+(i+1)));
+ return out.slice(1).map(r=>{const o={};heads.forEach((h,i)=>o[h]=(r[i]??'').toString().trim());return o;});
+}
+async function importFile(file,forceMassar){if(!file)return;try{const buf=await file.arrayBuffer();let rows;
+ if(/\.xlsx$/i.test(file.name)){try{const sheets=await xlsxGrids(buf);for(const sh of sheets){const res=parseMassarGrid(sh.grid,file.name);if(res){state.headers=Object.keys(res.students[0].raw);state.students=res.students;state.filename=file.name;state.stopHistory=[];state.massar=true;$('fileName').textContent=file.name;$('fileCount').textContent=`Massar · classe ${res.className||'?'} · ${res.students.length} élèves`;document.querySelector('#fileInfo .file-type').textContent='MASSAR';$('fileInfo').classList.add('visible');renderStudents();showToast(`Liste Massar importée : ${res.students.length} élèves${res.className?' · classe '+res.className:''}. Coche les participants.`);return;}}}catch(e){if(forceMassar){showToast('Import Massar impossible : '+e.message);return;}}if(forceMassar){showToast('Ce fichier ne ressemble pas à une liste Massar (colonne « اسم التلميذ » introuvable).');return;}}
+ state.massar=false;if(window.XLSX){const wb=XLSX.read(buf,{type:'array'});const ws=wb.Sheets[wb.SheetNames[0]];if(!ws)throw new Error('Aucune feuille trouvée.');rows=XLSX.utils.sheet_to_json(ws,{defval:'',raw:false});}else if(/\.(csv|tsv|txt)$/i.test(file.name)){rows=csvToRows(buf);}else{showToast('Hors ligne : le lecteur Excel n’est pas disponible. Enregistre ta liste en CSV (Fichier › Enregistrer sous › CSV UTF-8) puis importe-la.');return;}if(!rows.length)throw new Error('La feuille semble vide ou sans ligne d’en-têtes.');const headers=Object.keys(rows[0]||{});if(!headers.length)throw new Error('Aucune colonne détectée.');const parsed=parseRows(rows,headers);if(!parsed.length)throw new Error('Aucun élève détecté.');state.headers=headers;state.students=parsed;state.filename=file.name;document.querySelector('#fileInfo .file-type').textContent='XLSX';state.stopHistory=[];$('fileName').textContent=file.name;$('fileCount').textContent=`${parsed.length} lignes élèves · ${headers.length} colonnes détectées`;$('fileInfo').classList.add('visible');renderStudents();showToast(`${parsed.length} élèves importés avec succès.`);}catch(e){showToast('Import impossible : '+e.message);}}
+function selectedStudents(){return state.students.filter(s=>s.selected)}
+function configure(){state.startSpeed=Number($('startSpeed').value)||8.5;state.speedIncrement=Number($('speedIncrement').value)||.5;state.levelDuration=Math.max(10,Number($('levelDuration').value)||60);state.shuttleLength=Math.max(10,Number($('shuttleLength').value)||20);state.level=1;state.speed=state.startSpeed;}
+// Pistes connues : même structure de bips (mesurée), seul le début change. La durée du fichier importé sert à la reconnaître.
+const TRACK_URL='https://fitdistance.io/assets/audio/luc-leger-20mn.mp3';
+async function downloadTrack(){
+ const btn=$('downloadTrackBtn'),wrap=$('dlWrap'),bar=$('dlBar'),st=$('audioFileStatus');
+ if(!navigator.onLine&&!state.audioMode){st.textContent='Pas de connexion : impossible de télécharger maintenant. Fais-le une fois avec du réseau (la piste reste ensuite sur l’appareil), ou importe le MP3 à la main.';st.style.color='var(--red)';return;}
+ btn.disabled=true;wrap.classList.remove('hidden');bar.style.width='0%';st.style.color='var(--blue)';st.textContent='Téléchargement de la bande-son… 0 %';
+ try{
+  const resp=await fetch(TRACK_URL,{mode:'cors',cache:'no-store'});
+  if(!resp.ok)throw new Error('HTTP '+resp.status);
+  const total=Number(resp.headers.get('content-length'))||0;let parts=[],got=0;
+  if(resp.body&&resp.body.getReader){const rd=resp.body.getReader();for(;;){const {done,value}=await rd.read();if(done)break;parts.push(value);got+=value.length;const pct=total?Math.min(100,got/total*100):0;bar.style.width=(total?pct:50)+'%';st.textContent=`Téléchargement de la bande-son… ${total?pct.toFixed(0)+' %':''} (${(got/1048576).toFixed(1)}${total?' / '+(total/1048576).toFixed(1):''} Mo)`;}}
+  else{const ab=await resp.arrayBuffer();parts=[ab];got=ab.byteLength;}
+  if(total&&got<total)throw new Error('téléchargement incomplet');
+  if(got<1000000)throw new Error('fichier trop petit');
+  bar.style.width='100%';
+  const file=new File(parts,'luc-leger-20mn.mp3',{type:'audio/mpeg'});
+  loadReferenceAudio(file);
+ }catch(e){
+  wrap.classList.add('hidden');
+  st.style.color='var(--red)';
+  st.textContent=(e&&e.name==='TypeError')?'Téléchargement automatique impossible (réseau coupé ou site qui refuse l’accès depuis cette page). Utilise « Importer le MP3 à la main » ci-dessous.':'Téléchargement interrompu ('+(e&&e.message||'erreur')+'). Réessaie, ou importe le MP3 à la main.';
+  showToast('Téléchargement impossible : importe le MP3 à la main.');
+  const d=document.querySelector('.audio-panel details');if(d)d.open=true;
+ }finally{btn.disabled=false;}
+}
+function trackReady(){const a=$('referenceAudio');return !!(state.audioMode&&state.referenceAudio===a&&a.src&&a.src.startsWith('blob:'));} // source locale (blob) = données déjà entièrement dans l'appareil : aucun réseau nécessaire
+const KNOWN_AUDIO=[
+ {name:'luc-leger-20mn.mp3 (fitdistance.io) — test-luc-leger-navette-vma',duration:1226.76,firstBeep:8.41},
+ {name:'Test Luc Léger – Audio officiel avec paliers (20 min)',duration:1210.23,firstBeep:7.39}
+];
+function recogniseAudio(d){return Number.isFinite(d)?KNOWN_AUDIO.find(k=>Math.abs(k.duration-d)<=0.8):null;}
+// --- Piste mémorisée sur l'appareil : importée une seule fois, ensuite lue depuis la mémoire (aucun réseau nécessaire) ---
+const TRACK_DB={name:'luc-leger-track',store:'files',key:'track'};
+function idb(){return new Promise((res,rej)=>{try{const r=indexedDB.open(TRACK_DB.name,1);r.onupgradeneeded=()=>r.result.createObjectStore(TRACK_DB.store);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}});}
+async function trackSave(file){try{const db=await idb();await new Promise((res,rej)=>{const tx=db.transaction(TRACK_DB.store,'readwrite');tx.objectStore(TRACK_DB.store).put({blob:file,name:file.name,size:file.size,saved:Date.now()},TRACK_DB.key);tx.oncomplete=res;tx.onerror=()=>rej(tx.error);});if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();$('forgetTrackBtn').classList.remove('hidden');return true;}catch(e){return false;}}
+async function trackLoad(){try{const db=await idb();return await new Promise((res)=>{const q=db.transaction(TRACK_DB.store).objectStore(TRACK_DB.store).get(TRACK_DB.key);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null);});}catch(e){return null;}}
+async function trackForget(){try{const db=await idb();await new Promise(res=>{const tx=db.transaction(TRACK_DB.store,'readwrite');tx.objectStore(TRACK_DB.store).delete(TRACK_DB.key);tx.oncomplete=res;tx.onerror=res;});}catch(e){}$('forgetTrackBtn').classList.add('hidden');clearReferenceAudio();showToast('Piste supprimée de cet appareil.');}
+async function initSavedTrack(){const t=await trackLoad();if(!t||!t.blob)return;$('forgetTrackBtn').classList.remove('hidden');const f=new File([t.blob],t.name||'luc-leger.mp3',{type:t.blob.type||'audio/mpeg'});loadReferenceAudio(f,true);}
+async function keepAwake(){try{if('wakeLock' in navigator){state.wakeLock=await navigator.wakeLock.request('screen');}}catch(e){}}
+function releaseAwake(){try{if(state.wakeLock){state.wakeLock.release();state.wakeLock=null;}}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&state.started&&!state.wakeLock)keepAwake();});
+function loadReferenceAudio(file,fromStore){
+ if(!file)return;
+ if(!String(file.type||'').startsWith('audio/')&&!/\.(mp3|wav|m4a|ogg|aac|flac)$/i.test(file.name)){showToast('Choisis un fichier audio MP3, WAV, M4A ou OGG.');return;}
+ if(state.audioObjectURL)URL.revokeObjectURL(state.audioObjectURL);
+ const audio=$('referenceAudio');audio.pause();audio.removeAttribute('src');audio.load();
+ state.audioObjectURL=URL.createObjectURL(file);state.referenceAudio=audio;audio.preload='auto';audio.src=state.audioObjectURL;state.audioMode=true;setAudioProfileInputs(true);audio.load();
+ $('referenceAudio').classList.remove('hidden');$('audioFileStatus').textContent=`Bande-son prête : ${file.name} · lecture locale dans le navigateur.`;
+ $('audioFileStatus').style.color='var(--lime)';if(!fromStore){trackSave(file).then(ok=>{if(ok)showToast('Piste enregistrée sur cet appareil : plus besoin de la réimporter, même sans Internet.');});}else showToast('Piste enregistrée retrouvée sur cet appareil.');
+}
+function clearReferenceAudio(){if(state.referenceAudio){state.referenceAudio.pause();state.referenceAudio.removeAttribute('src');state.referenceAudio.load();}if(state.audioObjectURL)URL.revokeObjectURL(state.audioObjectURL);state.audioObjectURL='';state.audioMode=false;setAudioProfileInputs(false);state.referenceAudio=$('referenceAudio');$('referenceAudio').classList.add('hidden');$('audioFile').value='';$('audioFileStatus').textContent='Aucune bande-son importée — clique sur « Télécharger la bande-son dans l’appareil ».';$('audioFileStatus').style.color='var(--lime)';$('audioClockNote').classList.add('hidden');}
+function shuttlesForLevel(level){
+ const standard=[7,8,8,9,9,10,10,11,11,11,12,12,13,13,13,14,14,15,15,16,16];
+ // For the analyzed ENASIS audio, keep the same shuttle count progression while
+ // the first-99-shuttle timing is calibrated from the user's measured averages.
+ if(level<=standard.length&&((state.audioMode&&state.speedIncrement===0.5)||(state.startSpeed===8.5&&state.speedIncrement===0.5)))return standard[level-1];
+ const theoretical=state.startSpeed+(level-1)*state.speedIncrement;
+ return Math.max(1,level===1?Math.floor(theoretical*60/72):Math.ceil(theoretical*60/72));
+}
+function measuredSecondsForTour(tour){
+ const groups=[
+  {start:1,end:10,mean:8.89},
+  {start:11,end:20,mean:8.22},
+  {start:21,end:30,mean:7.67},
+  {start:31,end:40,mean:7.15},
+  {start:41,end:50,mean:6.75},
+  {start:51,end:60,mean:6.46},
+  {start:61,end:70,mean:6.19},
+  {start:76,end:85,mean:5.75},
+  {start:90,end:99,mean:5.49}
+ ];
+ const group=groups.find(g=>tour>=g.start&&tour<=g.end);
+ if(group)return group.mean;
+ // The summary did not include tours 71–75 or 86–89; interpolate between
+ // the midpoints of the nearest reported ten-tour blocks rather than inventing raw values.
+ const anchors=groups.map(g=>({x:(g.start+g.end)/2,y:g.mean})).sort((a,b)=>a.x-b.x);
+ let left=anchors[0],right=anchors[anchors.length-1];
+ for(let i=0;i<anchors.length-1;i++){if(tour>=anchors[i].x&&tour<=anchors[i+1].x){left=anchors[i];right=anchors[i+1];break;}}
+ const ratio=(tour-left.x)/(right.x-left.x);
+ return left.y+(right.y-left.y)*ratio;
+}
+// Instants RÉELS des 221 bips de la bande-son « Test Luc Léger – Audio officiel avec paliers (20 min) », mesurés sur le signal audio (bip 1140 Hz).
+// Temps en secondes depuis le début de la piste ; le premier bip (7,39 s) est le départ du palier 1 (8,5 km/h).
+const BEEP_TIMES=[7.39,16.39,24.94,33.42,41.89,50.36,58.83,67.19,75.19,83.19,91.2,99.2,107.2,115.2,123.21,130.89,138.47,146.05,153.63,161.21,168.79,176.37,183.95,191.22,198.42,205.62,212.82,220.02,227.22,234.43,241.63,248.66,255.52,262.37,269.24,276.09,282.95,289.83,296.67,303.53,310.15,316.7,323.24,329.79,336.34,342.88,349.43,355.97,362.52,368.9,375.16,381.43,387.69,393.95,400.21,406.48,412.74,419.0,425.26,431.26,437.27,443.27,449.27,455.27,461.27,467.27,473.27,479.28,485.28,491.04,496.8,502.56,508.32,514.08,519.84,525.61,531.37,537.13,542.86,548.49,554.03,559.57,565.11,570.65,576.19,581.73,587.27,592.81,598.34,603.88,609.27,614.6,619.94,625.27,630.61,635.94,641.28,646.61,651.95,657.28,662.61,667.85,673.0,678.14,683.28,688.43,693.57,698.72,703.86,709.0,714.15,719.29,724.44,729.43,734.4,739.37,744.33,749.3,754.27,759.23,764.2,769.17,774.14,779.1,784.07,788.92,793.72,798.52,803.32,808.12,812.92,817.72,822.52,827.32,832.12,836.92,841.72,846.51,851.13,855.78,860.43,865.07,869.72,874.36,879.01,883.66,888.3,892.95,897.6,902.24,906.84,911.34,915.84,920.34,924.84,929.34,933.84,938.35,942.85,947.35,951.85,956.35,960.85,965.35,969.72,974.08,978.45,982.81,987.18,991.54,995.91,1000.28,1004.63,1009.0,1013.37,1017.73,1022.1,1026.43,1030.66,1034.9,1039.14,1043.38,1047.61,1051.85,1056.08,1060.32,1064.55,1068.79,1073.03,1077.26,1081.5,1085.72,1089.84,1093.96,1098.07,1102.18,1106.3,1110.41,1114.53,1118.64,1122.76,1126.88,1130.99,1135.1,1139.22,1143.33,1147.39,1151.39,1155.4,1159.4,1163.4,1167.39,1171.39,1175.4,1179.4,1183.4,1187.4,1191.4,1195.4,1199.4,1203.4];
+// Palier (1 à 20) de chaque navette, déduit des changements d'intervalle entre bips (palier 1 = 8,5 km/h … palier 20 = 18,0 km/h).
+const BEEP_LEVELS=[1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,9,9,9,9,9,9,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,11,11,11,11,11,11,11,11,11,11,11,12,12,12,12,12,12,12,12,12,12,12,13,13,13,13,13,13,13,13,13,13,13,13,13,14,14,14,14,14,14,14,14,14,14,14,14,15,15,15,15,15,15,15,15,15,15,15,15,15,16,16,16,16,16,16,16,16,16,16,16,16,16,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18,18,18,18,18,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,20,20,20,20,20,20,20,20,20,20,20,20,20,20];
+// Numérotation standard Luc Léger : palier 1 = 8,5 km/h, +0,5 km/h par palier (aucun échauffement dans cette piste).
+function lvlNum(n){return n>=1?String(n).padStart(2,'0'):'É'}
+function lvlTag(n){return n>=1?'P'+String(n).padStart(2,'0'):'É'}
+function lvlText(n){return n>=1?'palier '+n:'échauffement'}
+function buildAudioTimeline(){
+ const t0=BEEP_TIMES[0],legs=[],bounds={};
+ for(let i=0;i<BEEP_LEVELS.length;i++){
+  const L=BEEP_LEVELS[i],s=BEEP_TIMES[i]-t0,e=BEEP_TIMES[i+1]-t0;
+  if(!bounds[L])bounds[L]={start:s,end:e,count:0};
+  bounds[L].end=e;bounds[L].count++;
+  legs.push({start:s,end:e,level:L,speed:8.5+(L-1)*0.5,shuttleInLevel:bounds[L].count,totalBefore:i,levelStart:0,levelEnd:0,levelCount:0,calibrated:true});
+ }
+ legs.forEach(l=>{const b=bounds[l.level];l.levelStart=b.start;l.levelEnd=b.end;l.levelCount=b.count;});
+ state.audioTimeline=legs;state.audioTimelineDuration=legs.length?legs[legs.length-1].end:0;
+}
+
+// Repères de la VOIX de la bande-son (mesurés dans le signal ; secondes depuis le 1er bip, instant où l'annonce est terminée).
+// Indices 0,4,8,… = annonce « palier » ; 1,2,3 (puis +4) = « 15 », « 30 », « 45 » secondes ; le dernier (76) = fin du test.
+// Les deux pistes de 20 min ont exactement la même voix.
+const VOICE_MARKS=[59.34,73.58,88.61,103.83,119.07,133.8,148.76,162.99,179.28,193.99,208.92,223.9,238.95,254.31,268.96,283.09,298.84,313.8,328.38,343.8,358.91,373.39,388.88,404.3,419.28,433.67,448.36,463.91,479.69,493.55,508.94,522.85,538.3,553.71,569.05,583.56,599.02,613.81,629.62,643.62,659.31,673.8,688.74,703.61,718.94,733.93,748.88,763.75,779.44,794.11,808.76,823.83,839.5,853.34,868.84,883.71,898.87,914.04,928.82,943.61,959.4,973.8,989.3,1004.01,1020.33,1034.68,1049.69,1063.69,1079.61,1095.05,1109.32,1124.72,1139.01,1153.49,1169.01,1183.62,1199.53];
+const QUARTER_TEXT=['avant 15 s','après 15 s','après 30 s','après 45 s'];
+function numDisplay(k){return state.numbering==='first'?k+1:k;} // k = nombre d'annonces « palier » entendues
+function lapsDoneAt(t){let n=0;for(let i=1;i<BEEP_TIMES.length;i++){if(BEEP_TIMES[i]-BEEP_TIMES[0]<=t)n++;else break;}return n;}
+function quarterLabel(r){return r&&r.quarter!=null?QUARTER_TEXT[r.quarter]||'—':'—';}
+function vmaText(r){if(!r||r.vma==null)return '—';return Number(r.vma).toFixed(3).replace(/0+$/,'').replace(/\.$/,'.0');}
+function getAudioSnapshot(){
+ const audio=state.referenceAudio;const rawElapsed=audio?audio.currentTime-state.audioStartOffset:0;const elapsed=Math.min(Math.max(0,rawElapsed),state.audioTimelineDuration||Math.max(0,rawElapsed));
+ const legs=state.audioTimeline;
+ if(rawElapsed<0||!legs.length)return {waiting:true,elapsed:0,level:numDisplay(0),k:0,speed:8.5,levelShuttles:0,totalShuttles:0,time:'00:00',leg:null,progress:0,quarter:0,vma:8.0,palierStart:0,palierEnd:VOICE_MARKS[0]};
+ let lo=0,hi=legs.length-1;
+ while(lo<hi){const mid=Math.floor((lo+hi)/2);if(elapsed<legs[mid].end)hi=mid;else lo=mid+1;}
+ let leg=legs[lo];if(elapsed>=legs[legs.length-1].end)leg=legs[legs.length-1];
+ const progress=Math.max(0,Math.min(1,(elapsed-leg.start)/Math.max(.001,leg.end-leg.start)));
+ const totalShuttles=elapsed>=state.audioTimelineDuration?legs.length:leg.totalBefore;
+ // palier et repère d'après la voix
+ let mi=-1;for(let j=0;j<VOICE_MARKS.length-1;j++){if(VOICE_MARKS[j]<=elapsed)mi=j;else break;}
+ const k=mi<0?0:Math.floor(mi/4)+1,q=mi<0?0:mi%4;
+ const palierStart=k>0?VOICE_MARKS[4*(k-1)]:0;
+ const palierEnd=(4*k<VOICE_MARKS.length-1)?VOICE_MARKS[4*k]:VOICE_MARKS[VOICE_MARKS.length-1];
+ const speed=8.5+0.5*k;                       // vitesse nominale du palier en cours
+ const vma=8.0+0.5*k+0.125*q;                 // dernier palier complété (+0,125 km/h par repère de 15 s franchi)
+ const levelShuttles=Math.max(0,totalShuttles-lapsDoneAt(palierStart));
+ return {waiting:false,elapsed,level:numDisplay(k),k,speed,levelShuttles,totalShuttles,time:formatTime(elapsed),leg,progress,quarter:q,vma,palierStart,palierEnd};
+}
+function startReferenceAudio(){keepAwake();
+ const audio=(state.audioMode&&state.referenceAudio)?state.referenceAudio:$('referenceAudio');if(!state.audioMode||!audio||!audio.src){showToast('Bande-son pas encore prête : attends « prête » dans le panneau audio.');return;}
+ if(state.shuttleLength!==20){showToast('La bande-son standard du Luc Léger doit être utilisée sur 20 m.');return;}
+ state.referenceAudio=audio;state.numbering=$('palierNumbering')?$('palierNumbering').value:'voice';state.audioStartOffset=Math.max(0,Number($('audioStartOffset').value)||0);buildAudioTimeline();
+ state.started=true;state.paused=false;state.sessionStart=0;state.shuttlesTotal=0;state.shuttlesInLevel=0;state.eventLevel=1;state.direction=1;
+ audio.pause();try{audio.currentTime=0;}catch(e){}audio.muted=!state.sound;
+ audio.play().then(()=>{$('liveStatusText').textContent=state.audioStartOffset>0?'INTRODUCTION AUDIO':'EN COURS';}).catch(()=>{state.started=false;showToast('Lecture bloquée par le navigateur. Appuie sur Lancer à nouveau, puis autorise le son.');});
+ loop();
+}
+
+function setView(name){document.documentElement.dataset.view=name;['setupView','liveView','resultsView'].forEach(id=>$(id).classList.add('hidden'));$(name+'View').classList.remove('hidden');['step1','step2','step3'].forEach(id=>$(id).classList.remove('active'));if(name==='setup')$('step1').classList.add('active');if(name==='live')$('step2').classList.add('active');if(name==='results')$('step3').classList.add('active');state.stage=name;window.scrollTo({top:0,behavior:'smooth'})}
+function startPreparation(){const crew=selectedStudents();if(!crew.length)return;if(state.audioMode&&!trackReady()){showToast('La bande-son n’est pas encore entièrement chargée dans l’appareil : attends le message vert « en mémoire » avant de lancer.');return;}if(!state.audioMode&&!confirm('Aucune bande-son officielle chargée : le test utilisera des bips générés par la page (non officiels).\n\nPour la vraie piste Luc Léger, annule puis clique sur « Télécharger la bande-son dans l’appareil ».\n\nContinuer quand même ?'))return;configure();if(state.audioMode&&state.shuttleLength!==20){showToast('La bande-son standard est prévue pour 20 m. Modifie la distance ou retire la bande-son.');return;}state.students.forEach(s=>{if(s.selected){s.result=null;s.status='active';s.motif='';s.motifText='';}else if(!s.result){s.status='unselected';}s.position=0});state.stopHistory=[];state.started=false;state.paused=false;state.sound=true;state.shuttlesTotal=0;state.shuttlesInLevel=0;state.eventLevel=1;state.direction=1;state.sessionStart=0;state.audioTimeline=[];state.audioTimelineDuration=0;$('pauseBtn').textContent='Ⅱ Pause';$('soundBtn').textContent='🔊 Son : oui';$('soundLabel').textContent='activés';$('liveParticipantCount').textContent=crew.length;$('totalLiveCount').textContent=crew.length;$('stoppedCount').textContent='0';$('trackDistance').textContent=state.shuttleLength;renderTrack();$('nextGroupLiveBtn').classList.toggle('hidden',!state.students.some(x=>canAuto(x)&&!x.selected));$('groupLabel').textContent=(state.group||1)>1?' · groupe '+state.group:'';setView('live');$('liveStatusText').textContent='PRÊT';$('elapsedTime').textContent='00:00';$('currentLevel').textContent='01';$('currentSpeed').textContent=state.startSpeed.toFixed(1);$('levelProgress').style.width='0%';$('audioClockNote').classList.toggle('hidden',!state.audioMode);if(state.audioMode){startReferenceAudio();}else{beginCountdown();}}
+function beginCountdown(){const layer=$('countdown');layer.classList.remove('hidden');let n=3;$('countdownNumber').textContent=n;const tick=()=>{n--;if(n<=0){layer.classList.add('hidden');startTestClock();return;}$('countdownNumber').textContent=n;state.countdownTimer=setTimeout(tick,1000)};state.countdownTimer=setTimeout(tick,1000)}
+function getLevelAt(seconds){return Math.max(1,Math.floor(Math.max(0,seconds)/state.levelDuration)+1)}
+function speedAt(level){return state.startSpeed+(level-1)*state.speedIncrement}
+function intervalFor(level){return 72*state.shuttleLength/20/speedAt(level)}
+function ensureAudio(){try{if(!state.audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(AC)state.audioCtx=new AC();}if(state.audioCtx&&state.audioCtx.state==='suspended')state.audioCtx.resume();}catch(e){}}
+function beep(){if(!state.sound)return;try{ensureAudio();if(!state.audioCtx)return;const ctx=state.audioCtx;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type='sine';osc.frequency.value=1050;gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.17,ctx.currentTime+.012);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.11);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.12);}catch(e){}}
+function startTestClock(){state.started=true;state.paused=false;state.sessionStart=performance.now();state.lastBeepAt=state.sessionStart;state.level=1;state.speed=state.startSpeed;state.nextBeepAt=state.sessionStart+intervalFor(1)*1000;state.shuttlesTotal=0;state.shuttlesInLevel=0;state.eventLevel=1;state.direction=1;beep();$('liveStatusText').textContent='EN COURS';$('pauseBtn').textContent='Ⅱ Pause';loop();}
+function updateSyntheticFrame(){
+ const now=performance.now();let loops=0;
+ while(now>=state.nextBeepAt&&loops<10){const eventElapsed=(state.nextBeepAt-state.sessionStart)/1000;const lev=getLevelAt(eventElapsed);if(lev!==state.eventLevel){state.eventLevel=lev;state.shuttlesInLevel=0;}state.shuttlesTotal++;state.shuttlesInLevel++;state.direction*=-1;state.lastBeepAt=state.nextBeepAt;beep();state.nextBeepAt+=intervalFor(lev)*1000;loops++;}
+ const elapsed=Math.max(0,(now-state.sessionStart)/1000);state.level=getLevelAt(elapsed);state.speed=speedAt(state.level);const pct=Math.min(100,(elapsed%state.levelDuration)/state.levelDuration*100);
+ $('elapsedTime').textContent=formatTime(elapsed);$('currentLevel').textContent=String(state.level).padStart(2,'0');$('currentSpeed').textContent=state.speed.toFixed(1);$('levelProgress').style.width=pct+'%';$('stoppedCount').textContent=state.students.filter(s=>s.selected&&s.result).length;
+ const duration=Math.max(100,(state.nextBeepAt-state.lastBeepAt));const prog=Math.max(0,Math.min(1,(now-state.lastBeepAt)/duration));
+ for(const s of selectedStudents()){if(s.result)continue;s.position=state.direction===1?prog*100:(1-prog)*100;const node=document.querySelector(`[data-runner="${s.id}"]`);if(node)node.style.left=s.position+'%';const metric=document.querySelector(`[data-runner-result="${s.id}"]`);if(metric)metric.textContent=`P${String(state.level).padStart(2,'0')} · ${state.level===state.eventLevel?state.shuttlesInLevel:0}`;}
+}
+function updateReferenceFrame(){
+ if(state.referenceAudio&&state.referenceAudio.ended&&state.referenceAudio.currentTime<state.audioStartOffset){$('liveStatusText').textContent='BANDE-SON TERMINÉE';state.paused=true;$('pauseBtn').textContent='▶ Reprendre';return;}
+ const snap=getAudioSnapshot();
+ if(snap.waiting){$('elapsedTime').textContent='00:00';$('currentLevel').textContent=lvlNum(numDisplay(0));$('quarterLabel').textContent='';$('currentSpeed').textContent='8.5';$('levelProgress').style.width='0%';$('liveStatusText').textContent='ATTENTE DU DÉPART';return;}
+ state.level=snap.level;state.speed=snap.speed;state.shuttlesTotal=snap.totalShuttles;state.shuttlesInLevel=snap.levelShuttles;state.eventLevel=snap.level;
+ $('elapsedTime').textContent=snap.time;$('currentLevel').textContent=lvlNum(snap.level);$('quarterLabel').textContent=snap.quarter>0?'· '+snap.quarter*15+' s':'';$('currentSpeed').textContent=snap.speed.toFixed(1);
+ const leg=snap.leg;const pct=Math.max(0,Math.min(100,(snap.elapsed-snap.palierStart)/Math.max(.001,snap.palierEnd-snap.palierStart)*100));$('levelProgress').style.width=pct+'%';$('stoppedCount').textContent=state.students.filter(s=>s.selected&&s.result).length;
+ if(state.referenceAudio&&state.referenceAudio.ended){$('liveStatusText').textContent='BANDE-SON TERMINÉE';state.paused=true;$('pauseBtn').textContent='▶ Reprendre';return;}
+ $('liveStatusText').textContent=state.paused?'EN PAUSE':'SON SYNCHRONISÉ';
+ for(const s of selectedStudents()){if(s.result)continue;const direction=leg?(leg.totalBefore%2===0?1:-1):1;s.position=direction===1?snap.progress*100:(1-snap.progress)*100;const node=document.querySelector(`[data-runner="${s.id}"]`);if(node)node.style.left=s.position+'%';const metric=document.querySelector(`[data-runner-result="${s.id}"]`);if(metric)metric.textContent=`${lvlTag(snap.level)} · ${snap.levelShuttles}`;}
+}
+function loop(){cancelAnimationFrame(state.raf);const frame=()=>{if(!state.started)return;if(!state.paused){if(state.audioMode&&state.referenceAudio)updateReferenceFrame();else updateSyntheticFrame();}state.raf=requestAnimationFrame(frame)};state.raf=requestAnimationFrame(frame)}
+function formatTime(seconds){const n=Math.max(0,Math.floor(seconds));return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+function renderTrack(){const crew=selectedStudents();crew.forEach((s,i)=>{s.lane=i+1;});$('trackBoard').innerHTML=crew.map(s=>`<div class="player-row" data-player-row="${s.id}"><button type="button" dir="auto" class="player-name name-btn" data-stop-name="${s.id}" aria-label="Enregistrer l’arrêt de ${escapeHTML(s.displayName)}" title="Toucher le nom pour enregistrer l’arrêt"><strong dir="auto" title="${escapeHTML(s.displayName)}">${escapeHTML(s.displayName)}</strong><span>${escapeHTML(s.className||'Classe non renseignée')}</span></button><div class="lane-no" title="Couloir ${s.lane}" aria-label="Couloir ${s.lane}">${s.lane}</div><div class="track-lane"><div class="end-line left"></div><div class="end-line right"></div><span class="cone left">▲</span><span class="cone right">▲</span><button type="button" class="runner" data-runner="${s.id}" style="left:${s.position||0}%" aria-label="Enregistrer l’arrêt de ${escapeHTML(s.displayName)}" title="Toucher pour enregistrer l’arrêt">🏃</button></div><div class="player-result" data-runner-result="${s.id}">${lvlTag(numDisplay(0))} · 0</div></div>`).join('');$('trackBoard').querySelectorAll('[data-runner]').forEach(btn=>btn.addEventListener('click',()=>recordStop(Number(btn.dataset.runner))));$('trackBoard').querySelectorAll('[data-stop-name]').forEach(btn=>btn.addEventListener('click',()=>recordStop(Number(btn.dataset.stopName))));}
+function currentMetrics(){if(state.audioMode&&state.referenceAudio){const snap=getAudioSnapshot();return {level:snap.level,speed:snap.speed,levelShuttles:snap.levelShuttles,totalShuttles:snap.totalShuttles,time:snap.time,elapsed:snap.elapsed,quarter:snap.quarter,vma:snap.vma};}const now=state.paused&&state.pauseAt?state.pauseAt:performance.now(),elapsed=state.sessionStart?Math.max(0,(now-state.sessionStart)/1000):0;const level=getLevelAt(elapsed);const levelShuttles=level===state.eventLevel?state.shuttlesInLevel:0;const q=Math.max(0,Math.min(3,Math.floor((elapsed-(level-1)*state.levelDuration)/(state.levelDuration/4))));return {level,speed:speedAt(level),levelShuttles,totalShuttles:state.shuttlesTotal,time:formatTime(elapsed),elapsed,quarter:q,vma:speedAt(level)-state.speedIncrement+state.speedIncrement/4*q};}
+function recordStop(id,source='Arrêt individuel'){const s=state.students.find(x=>x.id===id);if(!s||!s.selected||s.result||!state.started)return;if(state.audioMode&&state.referenceAudio&&state.referenceAudio.currentTime<state.audioStartOffset){showToast('Le test n’a pas encore commencé selon la synchronisation audio.');return;}const m=currentMetrics();state.stopHistory.push(id);s.result={...m,source};s.status='stopped';const btn=document.querySelector(`[data-runner="${id}"]`);if(btn){btn.classList.add('stopped');btn.disabled=true;btn.style.left=(s.position||0)+'%';btn.setAttribute('aria-label',`${s.displayName}, arrêt enregistré (${lvlText(m.level)})`);}const res=document.querySelector(`[data-runner-result="${id}"]`);if(res){res.textContent=`${lvlTag(m.level)} ✓`;res.classList.add('stopped-label');}const row=document.querySelector(`[data-player-row="${id}"]`);if(row){row.classList.add('is-stopped');row.querySelector('.player-name span').textContent=`Arrêt à ${m.time}`;row.style.opacity='.82';const nb=row.querySelector('[data-stop-name]');if(nb)nb.disabled=true;}const stopped=state.students.filter(x=>x.selected&&x.result).length;$('stoppedCount').textContent=stopped;$('undoBtn').disabled=false;showToast(`Couloir ${s.lane||'?'} · ${s.displayName} : ${lvlText(m.level)}, ${QUARTER_TEXT[m.quarter]||''} · VMA ${vmaText(m)} km/h`);if(stopped===selectedStudents().length){state.paused=true;state.pauseAt=performance.now();if(state.audioMode&&state.referenceAudio)state.referenceAudio.pause();$('pauseBtn').textContent='▶ Reprendre';$('liveStatusText').textContent='TOUS ARRÊTÉS';showToast('Tous les participants ont été enregistrés. Termine la séance pour exporter.');}}
+function undoStop(){const id=state.stopHistory.pop();if(!id){$('undoBtn').disabled=true;return;}const s=state.students.find(x=>x.id===id);if(s){s.result=null;s.status='active';s.position=state.direction===1?0:100;const row=document.querySelector(`[data-player-row="${id}"]`);if(row){row.classList.remove('is-stopped');row.style.opacity='1';row.querySelector('.player-name span').textContent=s.className||'Classe non renseignée';const nb=row.querySelector('[data-stop-name]');if(nb)nb.disabled=false;const runner=row.querySelector('[data-runner]');runner.disabled=false;runner.classList.remove('stopped');runner.style.left=s.position+'%';runner.setAttribute('aria-label',`Enregistrer l’arrêt de ${s.displayName}`);const res=row.querySelector('[data-runner-result]');res.textContent=`${lvlTag(state.level)} · ${state.shuttlesInLevel}`;res.classList.remove('stopped-label');}showToast('Dernier arrêt annulé.');}$('stoppedCount').textContent=state.students.filter(x=>x.selected&&x.result).length;$('liveStatusText').textContent=state.paused?'EN PAUSE':'EN COURS';$('undoBtn').disabled=state.stopHistory.length===0;}
+function togglePause(){if(!state.started)return;if(!state.paused){state.paused=true;state.pauseAt=performance.now();if(state.audioMode&&state.referenceAudio)state.referenceAudio.pause();$('pauseBtn').textContent='▶ Reprendre';$('liveStatusText').textContent='EN PAUSE';}else{if(state.audioMode&&state.referenceAudio){if(state.referenceAudio.ended){showToast('La bande-son est terminée. Termine la séance ou recommence-la.');return;}state.referenceAudio.play().catch(()=>showToast('Impossible de reprendre la bande-son.'));}else{const shift=performance.now()-state.pauseAt;state.sessionStart+=shift;state.lastBeepAt+=shift;state.nextBeepAt+=shift;}state.paused=false;$('pauseBtn').textContent='Ⅱ Pause';$('liveStatusText').textContent=state.audioMode?'SON SYNCHRONISÉ':'EN COURS';}}
+function toggleSound(){state.sound=!state.sound;$('soundBtn').textContent=state.sound?'🔊 Son : oui':'🔇 Son : non';$('soundLabel').textContent=state.sound?'activés':'coupés';if(state.audioMode&&state.referenceAudio){state.referenceAudio.muted=!state.sound;}else if(state.sound&&state.started&&!state.paused)beep()}
+function openMotifModal(onDone,onBack,onNext){
+ const list=state.students.filter(s=>!isPart(s));if(!list.length){onDone();return;}
+ const bd=$('motifBackdrop'),box=$('motifList');
+ const draw=()=>{box.innerHTML=list.map(s=>`<div class="motif-row" data-mrow="${s.id}"><div class="motif-name" dir="auto">${escapeHTML(s.displayName)}</div><div class="chips">${[['Absent','Absent'],['Malade','Malade'],['Dispensé','Dispensé'],['Autre','Autre'],['later','Plus tard']].map(([v,l])=>`<button type="button" class="chip ${s.motif===v?'on':''}" data-id="${s.id}" data-motif="${v}">${l}</button>`).join('')}</div>${s.motif==='Autre'?`<input class="motif-other" data-other="${s.id}" placeholder="Précise le motif (ex. blessé, exclu, en sortie…)" value="${escapeHTML(s.motifText||'')}">`:''}</div>`).join('');
+  const miss=list.filter(s=>!s.motif).length;$('motifMissing').textContent=miss?`${miss} élève(s) sans motif`:'Tous les motifs sont renseignés ✓';};
+ box.onclick=ev=>{const b=ev.target.closest('.chip');if(!b)return;const s=list.find(x=>x.id===Number(b.dataset.id));if(!s)return;s.motif=s.motif===b.dataset.motif?'':b.dataset.motif;if(s.motif!=='Autre')s.motifText='';draw();};
+ box.oninput=ev=>{const i=ev.target.closest('[data-other]');if(!i)return;const s=list.find(x=>x.id===Number(i.dataset.other));if(s)s.motifText=i.value;};
+ bd.querySelectorAll('[data-bulk]').forEach(b=>b.onclick=()=>{list.forEach(s=>{if(!s.motif)s.motif=b.dataset.bulk;});draw();});
+ $('motifOkBtn').onclick=()=>{const miss=list.filter(s=>!s.motif).length;if(miss&&!confirm(`${miss} élève(s) n’ont pas de motif : ils seront inscrits « Non précisé ». Continuer ?`))return;bd.classList.add('hidden');onDone();};
+ $('motifBackBtn').onclick=()=>{bd.classList.add('hidden');onBack();};$('motifNextBtn').classList.toggle('hidden',!onNext);$('motifNextBtn').onclick=()=>{bd.classList.add('hidden');if(onNext)onNext();};
+ draw();bd.classList.remove('hidden');
+}
+function finishSession(){if(!state.started){return;}const remaining=selectedStudents().filter(s=>!s.result).length;if(remaining&&!confirm(`${remaining} élève(s) n’ont pas encore été arrêtés individuellement. En clôturant, leur palier affiché sera enregistré comme « Séance clôturée », et non comme un arrêt individuel. Continuer ?`))return;
+ const m=currentMetrics();const autoPaused=!state.paused;if(autoPaused)togglePause();
+ const finalize=()=>{releaseAwake();if(state.audioMode&&state.referenceAudio)state.referenceAudio.pause();state.started=false;state.paused=false;cancelAnimationFrame(state.raf);clearTimeout(state.countdownTimer);$('countdown').classList.add('hidden');selectedStudents().filter(s=>!s.result).forEach(s=>{s.result={...m,source:'Séance clôturée'};s.status='closed';});renderResults();setView('results');};
+ openMotifModal(finalize,()=>{if(autoPaused&&state.paused)togglePause();},()=>{closeRun(m);goNextGroup();});}
+function isPart(s){return !!(s.selected||s.result);}
+function motifClass(m){return {Absent:'absent',Malade:'malade','Dispensé':'dispense',Autre:'autre',later:'later'}[m]||'nonprecise';}
+function motifLabel(s){const m=s.motif;if(m==='later')return 'À tester (non passé)';if(m==='Autre')return 'Autre'+(s.motifText?' : '+s.motifText:'');return m||'Non précisé';}
+function resultRows(){return state.students.map((s,i)=>({student:s,index:i+1,selected:isPart(s),result:s.result,source:s.result?.source||''}));}
+function renderResults(){$('nextGroupBtn').classList.toggle('hidden',!state.students.some(canAuto));const rows=resultRows();const selected=rows.filter(x=>x.selected);const stopped=selected.filter(x=>x.result&&x.result.source==='Arrêt individuel').length;$('kpiAll').textContent=state.students.length;$('kpiSelected').textContent=selected.length;$('kpiStopped').textContent=stopped;$('resultSubtitle').textContent=`${state.filename||'Liste importée'} · résultats dans l’ordre original du fichier.`;
+ $('resultTableBody').innerHTML=rows.map(({student:s,index,selected:sel,result:r})=>{
+  if(!sel)return `<tr class="np-row ${motifClass(s.motif)}"><td>${index}</td><td dir="auto">${escapeHTML(s.displayName)}</td><td>${escapeHTML(s.className)}</td><td colspan="10"><span class="np-tag">${escapeHTML(motifLabel(s))}</span></td></tr>`;
+  const status=!r?'Non évalué':r.source==='Arrêt individuel'?'Arrêt enregistré':'Séance clôturée';const tag=!r?'pending':r.source==='Arrêt individuel'?'done':'pending';
+  return `<tr><td>${index}</td><td dir="auto">${escapeHTML(s.displayName)}</td><td>${escapeHTML(s.className)}</td><td>${s.lane||'—'}</td><td>Oui</td><td>${r?lvlNum(r.level):'—'}</td><td>${r?r.levelShuttles:'—'}</td><td>${r?r.speed.toFixed(1):'—'}</td><td>${r?quarterLabel(r):'—'}</td><td><b>${r?vmaText(r):'—'}</b></td><td>${r?r.totalShuttles:'—'}</td><td>${r?r.time:'—'}</td><td><span class="status-tag ${tag}">${status}</span></td></tr>`}).join('')}
+function buildExportRows(){return state.students.map(s=>{const out={...s.raw};const r=s.result;const part=isPart(s);Object.assign(out,{'Couloir':part&&s.lane?s.lane:'','Participant sélectionné':part?'Oui':'Non','Statut du test':!part?'Non participant':!r?'Non évalué':r.source==='Arrêt individuel'?'Arrêt enregistré':'Séance clôturée','Motif de non-participation':!part?motifLabel(s):'','Palier enregistré':r?(r.level>=1?r.level:'Échauffement'):'','Navettes du palier':r?r.levelShuttles:'','Vitesse du palier (km/h)':r?Number(r.speed.toFixed(1)):'','Repère de palier (voix)':r?quarterLabel(r):'','VMA affinée (km/h)':r&&r.vma!=null?Number(Number(r.vma).toFixed(3)):'','Navettes cumulées':r?r.totalShuttles:'','Temps (mm:ss)':r?r.time:'','Observation':r?r.source:''});return out;})}
+function exportCSV(){
+ const rows=buildExportRows();if(!rows.length){showToast('Aucun résultat à exporter.');return;}
+ const heads=Object.keys(rows[0]);const esc=v=>{v=v==null?'':String(v);return /[";\n\r]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;};
+ const csv='\uFEFF'+[heads.map(esc).join(';')].concat(rows.map(r=>heads.map(h=>esc(r[h])).join(';'))).join('\r\n');
+ const base=(state.filename||'classe').replace(/\.[^.]+$/,'').replace(/[^a-z0-9_-]+/gi,'_');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`Resultats_Luc_Leger_${base}.csv`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);
+ showToast('Hors ligne : export CSV (s’ouvre dans Excel).');
+}
+function printResults(){
+ const rows=resultRows();let sh=document.getElementById('printSheet');if(!sh){sh=document.createElement('div');sh.id='printSheet';document.body.appendChild(sh);}
+ const old=document.getElementById('printStyle');if(old)old.remove();
+ const svg=(w,h,inner)=>`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'>${inner}</svg>`)}")`;
+ const PAT=[
+  ['absent','#f9cfcf',svg(8,8,"<path d='M-1,1 L1,-1 M0,8 L8,0 M7,9 L9,7' stroke='rgba(176,28,28,0.5)' stroke-width='1.5' fill='none'/>"),'8px 8px'],
+  ['malade','#ffe2b0',svg(7,7,"<circle cx='3.5' cy='3.5' r='1.3' fill='rgba(185,95,0,0.65)'/>"),'7px 7px'],
+  ['dispense','#cbe0ff',svg(8,8,"<path d='M0,0 L8,8 M8,0 L0,8' stroke='rgba(25,85,180,0.45)' stroke-width='1.2' fill='none'/>"),'8px 8px'],
+  ['autre','#e0e0ea',svg(6,6,"<path d='M0,3.5 L6,3.5' stroke='rgba(60,60,95,0.5)' stroke-width='1.1' fill='none'/>"),'6px 6px'],
+  ['later','#ececec',svg(10,10,"<path d='M-1,11 L11,-1' stroke='rgba(90,90,90,0.4)' stroke-width='1' fill='none'/>"),'10px 10px']
+ ].map(([k,c,img,sz])=>`.${k},.sw.${k}{background-color:${c};background-image:${img};background-size:${sz}}`).join('\n')+'\n.nonprecise,.sw.nonprecise{background-color:#ececec}';
+ const st=document.createElement('style');st.id='printStyle';
+ // @page margin 0 : le navigateur n'imprime plus son en-tête (titre) ni son pied de page (adresse de la page) ; les marges sont recréées dans le tableau.
+ st.textContent=`#printSheet{display:none}
+@media print{html,body{margin:0!important;padding:0!important;background:#fff!important}body>*:not(#printSheet){display:none!important}
+#printSheet{display:block!important;padding:0 12mm;color:#111;background:#fff;font:11px/1.35 "Segoe UI",Arial,"Noto Naskh Arabic","Noto Sans Arabic",Tahoma,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printSheet h2{margin:0 0 3px;font-size:17px}#printSheet .meta{margin:0 0 9px;color:#333;font-size:11px}
+#printSheet table{width:100%;border-collapse:collapse;table-layout:fixed}#printSheet thead{display:table-header-group}#printSheet tfoot{display:table-footer-group}#printSheet tr{page-break-inside:avoid;break-inside:avoid}
+#printSheet th,#printSheet td{border:1px solid #777;padding:4px 5px;text-align:center;vertical-align:middle;overflow-wrap:anywhere}
+#printSheet tr.sp td,#printSheet tr.ttl td,#printSheet tr.note td{border:0!important;padding:0;text-align:start;background:none}
+#printSheet th{background:#e3e9f1;font-size:10px}#printSheet td.nm{text-align:start;font-weight:600}
+#printSheet tr.np td{font-weight:700;color:#222}#printSheet tr.np td.motif{text-align:center;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+#printSheet tr.np td.nm{border-right-color:transparent}
+#printSheet .sig{position:fixed;left:0;right:0;bottom:8mm;text-align:center;font-size:10.5px;color:#8a96a8}
+.sw{display:inline-block;width:34px;height:12px;border:1px solid #666;vertical-align:middle;margin:0 5px 0 12px}
+${PAT}
+#printSheet .foot{padding-top:9px;font-size:10px;color:#333;line-height:1.5}
+@page{size:A4 portrait;margin:0}}`;
+ document.head.appendChild(st);
+ const e=x=>String(x??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const cls=[...new Set(state.students.map(x=>x.className).filter(Boolean))].join(', ')||state.filename||'—';
+ const nPart=rows.filter(x=>x.selected).length;const used=new Set();
+ const body=rows.map(({student:s2,selected:sel,result:r})=>{
+  if(!sel){const k=motifClass(s2.motif);used.add(k);return `<tr class="np ${k}"><td class="nm ${k}" dir="auto">${e(s2.displayName)}</td><td class="motif ${k}" colspan="7">${e(motifLabel(s2))}</td></tr>`;}
+  const obs=!r?'Non évalué':r.source==='Arrêt individuel'?`Arrêt à ${r.time}${r.quarter>0?' · '+QUARTER_TEXT[r.quarter]:''}`:'Séance clôturée';
+  return `<tr><td class="nm" dir="auto">${e(s2.displayName)}</td><td>${e(s2.className)}</td><td>Oui</td><td>${r?(r.level>=1?r.level:'Éch.'):'—'}</td><td>${r?r.levelShuttles:'—'}</td><td>${r?vmaText(r):'—'}</td><td>${r?r.totalShuttles:'—'}</td><td>${e(obs)}</td></tr>`;}).join('');
+ const legend=[['absent','Absent'],['malade','Malade'],['dispense','Dispensé'],['autre','Autre'],['later','À tester / non précisé']].filter(([k])=>used.has(k)||(k==='later'&&used.has('nonprecise'))).map(([k,l])=>`<span class="sw ${k}"></span>${l}`).join('');
+ sh.innerHTML=`<table><colgroup><col style="width:27%"><col style="width:9%"><col style="width:7%"><col style="width:9%"><col style="width:10%"><col style="width:9%"><col style="width:10%"><col style="width:19%"></colgroup>
+<thead><tr class="sp"><td colspan="8" style="height:12mm"></td></tr><tr class="ttl"><td colspan="8"><h2>Test Luc Léger — Résultats</h2><p class="meta">Classe : <b>${e(cls)}</b> — Date : ${new Date().toLocaleDateString('fr-FR')} — Distance : ${state.shuttleLength} m — Participants : ${nPart} / ${rows.length}</p></td></tr>
+<tr><th>Nom et prénom</th><th>Classe</th><th>Part.</th><th>Palier</th><th>Navettes palier</th><th>VMA</th><th>Total navettes</th><th>Observation</th></tr></thead>
+<tbody>${body}<tr class="note"><td colspan="8"><div class="foot">VMA (km/h) = vitesse du dernier palier complété + 0,125 km/h par repère vocal franchi (15, 30, 45 s) dans le palier d’arrêt. « Éch. » = échauffement (avant le palier 1).${legend?'<br>Légende : '+legend:''}</div></td></tr></tbody>
+<tfoot><tr class="sp"><td colspan="8" style="height:22mm"></td></tr></tfoot></table>
+<div class="sig">${SIGNATURE}</div>`;
+ showToast('Choisis « Enregistrer au format PDF » dans la fenêtre d’impression.');setTimeout(()=>window.print(),300);
+}
+function exportExcel(){if(!window.XLSX){exportCSV();return;}const rows=buildExportRows();const ws=XLSX.utils.json_to_sheet(rows);ws['!cols']=Object.keys(rows[0]||{}).map(k=>({wch:Math.min(32,Math.max(14,k.length+2))}));const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'Résultats Luc Léger');const summary=[['Test Luc Léger — Résumé'],['Fichier source',state.filename],['Date',new Date().toLocaleDateString('fr-FR')],['Élèves importés',state.students.length],['Participants sélectionnés',selectedStudents().length],['Protocole intégré',state.audioMode?'Bande-son Luc Léger officielle (20 min) — horloge audio + instants réels des 221 bips détectés dans le signal':'Simulation progressive — à vérifier selon la bande-son officielle'],['Vitesse de départ (km/h)',state.startSpeed],['Incrément (km/h)',state.speedIncrement],['Durée d’un palier (s)',state.levelDuration],['Distance de navette (m)',state.shuttleLength],['Calcul de la VMA','Vitesse du dernier palier complété + 0,125 km/h par repère vocal franchi (15 s, 30 s, 45 s) dans le palier d’arrêt'],['Numérotation des paliers',state.numbering==='first'?'Palier 1 dès le premier bip':'Comme la voix (échauffement É, puis palier 1 annoncé par la voix)']];const ws2=XLSX.utils.aoa_to_sheet(summary);ws2['!cols']=[{wch:32},{wch:70}];XLSX.utils.book_append_sheet(wb,ws2,'Paramètres');const base=(state.filename||'classe').replace(/\.[^.]+$/,'').replace(/[^a-z0-9_-]+/gi,'_');XLSX.writeFile(wb,`Resultats_Luc_Leger_${base}.xlsx`);showToast('Fichier Excel exporté.')}
+function exportPDF(){printResults();}
+function openHelp(){ $('modalTitle').textContent='Mode d’emploi';$('modalText').innerHTML='1. Importe la liste (Excel/CSV, ou liste Massar .xlsx : noms en arabe, classe lue dans le nom du fichier) et coche le groupe qui court (jusqu’à ~15 : chaque élève a un numéro de couloir cerclé, à relier aux plots du terrain).<br><br>2. Avant le test (avec du réseau), clique sur « ① Télécharger la bande-son dans l’appareil » et attends le message vert « en mémoire ». La piste est gardée sur l’appareil : les fois suivantes et hors ligne, elle est retrouvée toute seule. Si le téléchargement automatique échoue, ouvre « Importer le MP3 à la main ». La piste est reconnue d’après sa durée et le début du mouvement se règle tout seul. Le lancement est bloqué tant que la piste n’est pas entièrement en mémoire, pour éviter toute coupure<br><br>3. La voix de la bande-son pilote l’affichage : le palier change quand la voix l’annonce, et les repères « 15 », « 30 », « 45 » secondes sont suivis en direct (graduations sur la barre de palier). La 1re minute à 8,5 km/h est un échauffement (É), puis la voix annonce le palier 1. Si ta voix annonce un autre numéro que l’écran, change « Numérotation des paliers ». Les avatars avancent d’une ligne à l’autre exactement entre les vrais bips. Utilise ± 0,05 s si l’avatar est décalé par rapport au son<br><br>4. Touche le nom de l’élève quand il s’arrête : le palier et le dernier repère de 15 s entendu sont enregistrés, et la VMA est calculée (vitesse du dernier palier complété + 0,125 km/h par repère franchi). Tu peux annuler le dernier arrêt. Pour enchaîner avec le reste de la classe, utilise « ⏭ Groupe suivant » (en bas du terrain) : les résultats du groupe sont conservés et les élèves suivants sont cochés d’avance. En plein soleil, le bouton « ☀ Mode clair » passe l’interface en thème clair très contrasté. Au bout du dernier groupe, la page demande le motif de ceux qui n’ont pas couru (absent, malade, dispensé, autre, ou « plus tard » s’ils passent dans un autre groupe : bouton « Tester un autre groupe »). Exporte ensuite en Excel ou en PDF (impression « Enregistrer au format PDF »).<br><br><b>Important :</b> ne déplace pas le curseur du lecteur pendant le test.';$('modalBackdrop').classList.remove('hidden')}
+$('chooseFileBtn').addEventListener('click',()=>$('fileInput').click());$('fileInput').addEventListener('change',e=>importFile(e.target.files[0]));$('chooseMassarBtn').addEventListener('click',()=>$('massarInput').click());$('massarInput').addEventListener('change',e=>{importFile(e.target.files[0],true);e.target.value='';});$('audioFile').addEventListener('change',e=>loadReferenceAudio(e.target.files[0]));document.querySelectorAll('[data-nudge]').forEach(b=>b.addEventListener('click',()=>{state.audioStartOffset=Math.max(0,Math.round((state.audioStartOffset+Number(b.dataset.nudge))*100)/100);$('audioStartOffset').value=state.audioStartOffset.toFixed(2);$('nudgeValue').textContent='décalage '+state.audioStartOffset.toFixed(2)+' s';}));$('downloadTrackBtn').addEventListener('click',downloadTrack);$('clearAudioBtn').addEventListener('click',clearReferenceAudio);$('forgetTrackBtn').addEventListener('click',trackForget);$('referenceAudio').addEventListener('loadedmetadata',()=>{if(!state.audioMode)return;const d=$('referenceAudio').duration;const k=recogniseAudio(d);const st=$('audioFileStatus');if(k){state.audioStartOffset=k.firstBeep;$('audioStartOffset').value=k.firstBeep.toFixed(2);st.textContent=`✓ Piste reconnue : ${k.name} · durée ${formatTime(d)} · début du mouvement réglé automatiquement sur ${k.firstBeep.toFixed(2).replace('.',',')} s (premier bip). Bande-son entièrement en mémoire : aucune coupure possible. Les avatars suivent les 221 bips mesurés.`;st.style.color='var(--lime)';$('dlWrap').classList.add('hidden');showToast('Piste reconnue : synchronisation prête.');}else{st.textContent=`⚠ Piste non reconnue (durée ${Number.isFinite(d)?formatTime(d):'?'}). Les durées connues sont 20:26 (luc-leger-20mn.mp3) et 20:10 (audio officiel). Importe plutôt le MP3 téléchargé via ①, ou règle le début du mouvement à la main et envoie-moi ce fichier pour le mesurer.`;st.style.color='var(--amber, #f5b942)';showToast('Piste non reconnue : synchronisation incertaine.');}});$('referenceAudio').addEventListener('error',()=>{if(!state.audioMode)return;$('audioFileStatus').textContent='Ce fichier audio n’a pas pu être lu. Importe un MP3 valide.';$('audioFileStatus').style.color='var(--red)';showToast('Fichier audio illisible.');});$('removeFileBtn').addEventListener('click',resetImport);$('studentSearch').addEventListener('input',renderStudents);$('selectAllBtn').addEventListener('click',()=>{state.students.forEach(s=>{if(!s.result)s.selected=true});renderStudents()});$('selectNextBtn').addEventListener('click',()=>{state.students.forEach(s=>{if(!s.result)s.selected=false});let n=0;for(const s of state.students){if(!canAuto(s))continue;if(n<15){s.selected=true;n++;}}renderStudents();showToast(n?`${n} élève(s) cochés (couloirs 1 à ${n}).`:'Tous les élèves ont déjà été testés.');});$('selectNoneBtn').addEventListener('click',()=>{state.students.forEach(s=>{if(!s.result)s.selected=false});renderStudents()});$('startBtn').addEventListener('click',startPreparation);$('pauseBtn').addEventListener('click',togglePause);$('soundBtn').addEventListener('click',toggleSound);$('undoBtn').addEventListener('click',undoStop);$('finishBtn').addEventListener('click',finishSession);$('backBtn').addEventListener('click',()=>{setView('setup');showToast('Tu peux vérifier la sélection ou préparer une nouvelle séance. Les résultats actuels restent disponibles jusqu’au prochain test.');});$('newSessionBtn').addEventListener('click',()=>{state.started=false;state.paused=false;cancelAnimationFrame(state.raf);if(state.referenceAudio)state.referenceAudio.pause();setView('setup')});$('nextGroupBtn').addEventListener('click',()=>{state.started=false;state.paused=false;cancelAnimationFrame(state.raf);if(state.referenceAudio)state.referenceAudio.pause();goNextGroup();});$('nextGroupLiveBtn').addEventListener('click',nextGroupFromLive);document.querySelectorAll('.theme-toggle').forEach(b=>b.addEventListener('click',toggleTheme));$('aboutBtn').addEventListener('click',openAbout);applyTheme(document.documentElement.getAttribute('data-theme')==='light'?'light':'dark');setInterval(updateHero,1000);updateHero();$('exportExcelBtn').addEventListener('click',exportExcel);$('exportPdfBtn').addEventListener('click',exportPDF);$('helpBtn').addEventListener('click',openHelp);$('modalClose').addEventListener('click',()=>$('modalBackdrop').classList.add('hidden'));$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))$('modalBackdrop').classList.add('hidden')});
+const dz=$('dropzone');['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('dragover')}));['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('dragover')}));dz.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0];if(f)importFile(f)});
+initSavedTrack();
+// Mode hors ligne : la page est gardée sur l'appareil après la 1re visite (uniquement en http/https, donc sur GitHub Pages)
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){window.addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{});});}
+window.addEventListener('beforeunload',e=>{if(state.started){e.preventDefault();e.returnValue='';}if(state.audioObjectURL)URL.revokeObjectURL(state.audioObjectURL);});
+renderStudents();
+})();
+</script>
+</body>
+</html>
